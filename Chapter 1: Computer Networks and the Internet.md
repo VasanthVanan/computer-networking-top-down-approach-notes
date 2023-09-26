@@ -21,9 +21,9 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 - To create an Internet application, you need to write programs for end systems.
 - End systems use a **socket interface** to instruct the Internet to deliver data to other end systems. It has rules that must be followed.
 
-    A socket interface that specifies how a program running on one end system asks the Internet infrastructure to deliver data to a specific destination program running on another end system.
+> A socket interface that specifies how a program running on one end system asks the Internet infrastructure to deliver data to a specific destination program running on another end system.
     
-    A protocol defines the format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or other event.
+> A protocol defines the format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or other event.
 
 ## 1.3 The Network Edge
 
@@ -35,7 +35,7 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 
 ## 1.4 Access Networks
 
-    Access Network — the network that physically connects an end system to the first router (also known as the “edge router”) on a path from the end system to any other distant end system.
+> Access Network — the network that physically connects an end system to the first router (also known as the “edge router”) on a path from the end system to any other distant end system.
 
 ### 1.4.1 Home Access: DSL 
 
@@ -85,3 +85,76 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 - It eliminates the need for **costly** and **unreliable cabling** from the telco's central office (CO) to homes.
 - Data is sent wirelessly from a provider's base station to a modem in the home using beam-forming technology.
 - A WiFi wireless router is connected to the modem, similar to cable or DSL modem setups.
+
+### 1.4.5 Enterprise & Home Access: Ethernet, WiFi
+
+- Ethernet is the predominant LAN technology, using twisted-pair copper wire with access speeds from 100 Mbps to tens of Gbps.
+- Wireless LAN users connect to an access point, which is linked to the enterprise's network (usually via wired Ethernet).
+- IEEE 802.11 (WiFi) is widely used for wireless LAN access with shared transmission rates exceeding 100 Mbps.
+- Ethernet and WiFi are used not only in enterprise settings but also in home networks.
+- Home networks often combine broadband residential access with wireless LAN technologies.
+
+## 1.5 Physical Media
+
+- Network access technologies in the Internet use various physical media, including fiber cable, coaxial cable, copper wire, and radio spectrum.
+
+>  Physical media fall into two categories: guided media and unguided media. With guided media, the waves are guided along a solid medium, such as a fiber-optic cable, a twisted-pair copper wire, or a coaxial cable. With unguided media, the waves propagate in the atmosphere and in outer space, such as in a wireless LAN or a digital satellite channel.
+
+- Installation labor costs for physical links can be significantly higher than material costs, motivating builders to install multiple types of media to save on future wiring expenses.
+- **Twisted-pair copper wire** is a common guided transmission medium, widely used in telephone networks and LANs. It consists of two insulated copper wires twisted together to **reduce interference**. Data rates for LANs range from 10 Mbps to 10 Gbps.
+- Twisted-pair technology, like category 6a cable, can achieve data rates of 10 Gbps for short distances, making it a dominant solution for high-speed LAN networking.
+- **Coaxial cable** consists of `two concentric copper conductors` and is commonly used in cable television systems. Coupled with cable modems, it provides high-speed Internet access at rates of hundreds of Mbps.
+- Coaxial cable can serve as a guided shared medium, allowing multiple end systems to connect directly to the cable and receive signals sent by other end systems.
+
+> In cable television and cable Internet access, the transmitter shifts the digital signal to a specific frequency band, and the resulting analog signal is sent from the transmitter to one or more receivers.
+
+- **Optical fibers** conduct light pulses as bits and offer high data rates, low attenuation, and resistance to interference.
+- Fiber optics are ideal for long-distance transmission but costly for short-haul applications.
+
+- **Terrsetial Radio channels** are wireless and versatile, influenced by propagation environment and distance.
+- Three categories of terrestrial radio channels: `short-range,` `local-area`, and `wide-area`.
+- Radio channel characteristics include `path loss`, `shadow fading`, `multipath fading`, and `interference`.
+
+- **Satellite communication** involves `geostationary` and `low-earth orbiting (LEO)` satellites.
+- Geostationary satellites stay fixed above one spot on Earth but introduce signal propagation delay.
+- LEO satellites are closer to Earth, move in orbits, and may require multiple satellites for continuous coverage.
+- Satellite links offer high speeds and serve areas without DSL or cable-based Internet access.
+
+## 1.6 Packet Switching (Store-and-Forward Transmission)
+
+- Most packet switches use **store-and-forward** transmission.
+- Packet switch must receive the entire packet before transmission.
+
+> Because the router employs store-and-forwarding, at this instant of time, the router cannot transmit the bits it has received; instead it must first buffer (i.e., “store”) the packet’s bits. Only after the router has received all of the packet’s bits can it begin to transmit (i.e., “forward”) the packet onto the outbound link
+
+- `Delay = 2L/R` for a simple source-destination network.
+- General delay formula for N links each of rate R: `d = N * (L/R)`.
+
+- **Queuing Delays and Packet Loss:** Packet switches have output buffers (output queues).
+- Queuing delays occur when the link is busy.
+- Packet loss can happen when the buffer is full due to congestion.
+
+> If, during a short interval of time, the arrival rate of packets to the router (when converted to bits per second) exceeds 15 Mbps, congestion will occur at the router as packets queue in the link’s output buffer before being transmitted onto the link.
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHfX55Xjkoab8kOtoXWB6Pz5F-CWrWrw5L4EFCw6OkzWdqMTgG54E0ZuEkveIh6dnKOvYNbfjwErwsKZvKgvWt-PqDh9Baiy-U_naufuJ4_MSsowqxExy_HUJVPfTrVjW2q_9N7vcgW3QgqDMD4RF2zK=w1806-h1130-s-no" width="700" height="400">
+
+- **Forwarding Tables and Routing Protocols:** Routers use forwarding tables to determine outbound links.
+- IP addresses are used for destination routing.
+- Routers consult forwarding tables based on destination addresses.
+- Internet uses routing protocols to configure forwarding tables automatically.
+
+## 1.7 Circuit Switching
+
+> In circuit-switched networks, the resources needed along a path (buffers, link transmission rate) to provide for communication between the end systems are reserved for the duration of the communication session between the end systems.
+
+- Circuit-switched networks reserve resources (buffers, link transmission rate) for the entire communication session, while packet-switched networks use resources on-demand and may involve queuing.
+- Traditional telephone networks are examples of circuit-switched networks, where circuits are established and transmission rate is reserved for the entire connection.
+- **Multiplexing in circuit-switched networks** can use `frequency-division multiplexing (FDM)` or `time-division multiplexing (TDM)`.
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHcnymJYAUF4Fn1TBsyIZwgZJ6JIBFewHZxR1y6w26eel_YuQjD32j5gqkJZ-NqMjqr32WXra6HCaP_Z9-HXc6oKcrzDifgPrrmuGzS7ec1I4rjT_R5SEviCfBTv0nLAHwlFcVUsi1hTgfto2b6-cU4q=w1482-h1088-s-no" width="600" height="400">
+
+>  FDM, the frequency domain is segmented into four bands, each of bandwidth 4 kHz. For TDM, the time domain is segmented into frames, with four time slots in each frame.
+
+- Packet switching is seen as more efficient because it doesn't reserve resources during idle periods, while circuit switching does.
+- Packet switching allows better sharing of transmission capacity and is simpler and more cost-effective than circuit switching.
+- Packet switching allocates link use on demand, while circuit switching pre-allocates link use regardless of demand.
