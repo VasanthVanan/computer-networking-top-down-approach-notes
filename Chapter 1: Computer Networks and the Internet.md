@@ -158,3 +158,26 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 - Packet switching is seen as more efficient because it doesn't reserve resources during idle periods, while circuit switching does.
 - Packet switching allows better sharing of transmission capacity and is simpler and more cost-effective than circuit switching.
 - Packet switching allocates link use on demand, while circuit switching pre-allocates link use regardless of demand.
+
+## 1.8 Networks of Networks
+
+- **Network Structures:** Various network structures are discussed, including global transit ISPs, regional ISPs, and tier-1 ISPs.
+- **Peering:** ISPs can peer, enabling direct traffic exchange without payment. Tier-1 ISPs also peer.
+- **IXPs:** Internet Exchange Points facilitate ISPs' direct connections, enhancing efficiency.
+- **Content Provider Networks:** Large providers like Google create their networks for control and cost reduction.
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHfe3VrXVOkt6FxFDHy4qRsByO6EugEHMcLkEvVuXtz2Bz3iZW28h32W2rJs7faFriHzgxJIfbOPV2Gd5L1_0e9PqKnc_pCtjmqNN0OxeH15auTYBd17kowR13spgnTFSgBjINghCV3Ew7gDsBC8lIh5=w1920-h926-s-no" width="600" height="300">
+
+## 1.9 Delay, Loss, Throughput
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHfL-nbDiTeiYVwKehMcZPCWS4vbdLyINcp3vKml8sDHzFSTYe1VwuexfmBm7WMuOcHHtZM3jBvRVSjVQPA5Nf3_UIDoQ0kpJrBEbwNwm-aBnnEFXz7mxgiKweHMy39iecCa53_7H2PxFA-5-pKN45Dq=w1920-h812-s-no" width="700" height="300">
+
+- **Types of Delays:** Several types of delays affect packets during their journey, including nodal processing delay, queuing delay, transmission delay, and propagation delay.
+- **Processing Delay:** Part of the processing delay includes examining the packet's header and checking for bit-level errors. High-speed routers have processing delays typically in microseconds.
+- **Queuing Delay:** Queuing delay occurs as packets wait in a queue before being transmitted onto the link. It depends on the number of packets ahead in the queue and can range from microseconds to milliseconds.
+- **Transmission Delay:** It is the time required to push all of a packet's bits into the link, determined by the packet's length and the transmission rate of the link. It is typically in microseconds to milliseconds.
+- **Propagation Delay:** It is the time for a bit to propagate from one router to the next, dependent on the distance between routers and the propagation speed of the link. It can be in milliseconds for wide-area networks.
+- **Comparing Transmission and Propagation Delay:** Transmission delay is about pushing out the packet, while propagation delay is about bit propagation. They can be thought of as the time it takes for a caravan of cars to travel between tollbooths on a highway.
+- **Traffic Intensity:** The traffic intensity (La/R) plays a vital role in estimating queuing delay. If it exceeds 1, queuing delay can approach infinity. It varies based on the rate of packet arrivals and the transmission rate.
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHd2b-31EKHc-W0Ah_HtMogmvFSs7LCK5p-2s6gK7o4h2dv7yao9fDUTvge6xrDnoPiVzIlly5XMmSi-l-sLOQST4M6NFGPxk7GSChBXEqVrqqEJD_ZESJ2vL-SSSzsXRw8dMtxXjAUJUIHuei8cA2j7=w1092-h888-s-no" width="600" height="400">
