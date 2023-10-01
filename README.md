@@ -18,5 +18,5 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 * [1.5 Physical Media](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#15-physical-media)
 * [1.6 Packet Switching (Store-and-Forward Transmission)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#16-packet-switching-store-and-forward-transmission)
 * [1.7 Circuit Switching](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#17-circuit-switching)
-* [1.8 Networks of Networks]()
-* [1.9 Delay, Loss, Throughput]()
+* [1.8 Networks of Networks](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#18-networks-of-networks)
+* [1.9 Delay, Loss, Throughput](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#19-delay-loss-throughput)
