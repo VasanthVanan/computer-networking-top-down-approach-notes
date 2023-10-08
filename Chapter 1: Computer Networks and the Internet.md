@@ -186,14 +186,22 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 
 > If the source receives fewer than three messages from any given router (due to packet loss in the network), Traceroute places an asterisk just after the router number and reports fewer than three round-trip times for that router.
 
-# 1.10 Throughput
+## 1.10 Throughput
 
 > If the file consists of F bits and the transfer takes T seconds for Host B to receive all F bits, then the average throughput of the file transfer is F/T bits/sec.
 
 - **Instantaneous vs. Average Throughput**: It explains the difference between instantaneous throughput (bits/sec at a given moment) and average throughput (bits/sec over the entire transfer).
-- **Two-Link Network**: In a simple network with two links, the throughput is determined by the slower link, which acts as the **bottleneck**.
+- **Two-Link Network**: In a simple network with two links, the throughput is determined by the slower link, which acts as the **bottleneck**. `min{Rc, Rs}`
 - **Multiple Links**: In a network with multiple links between source and destination, the throughput is limited by the slowest link along the path.
 - **Access Network**: In today's Internet, the access network is often the bottleneck for throughput due to over-provisioned core network links.
 - **Intervening Traffic**: Throughput can be affected by other data flows sharing the same link, even if the link has a high transmission rate.
 - **General Dependence**: Throughput depends not only on link transmission rates but also on intervening traffic, making it a more complex concept.
 
+## 1.11 Protocol Layers
+
+- **Protocol Layering**: Network protocols are organized into layers, with each layer providing specific services and using services from the layer below. This structure helps in the design and modularity of network protocols.
+- **Implementation of Layers**: Protocols can be implemented in software, hardware, or a combination of both. Application and transport layer protocols are typically implemented in software, while physical and data link layers are often implemented in hardware.
+- **Advantages of Layering**: Protocol layering offers modularity, making it easier to update components. It provides a structured way to discuss system components.
+- **Drawbacks of Layering**: Some argue against layering due to potential duplication of functionality and information dependencies between layers.
+- **Protocol Stack**: The protocols of different layers collectively form the protocol stack. The Internet protocol stack consists of five layers: physical, link, network, transport, and application layers.
+- **Encapsulation**: Data is encapsulated as it moves down the protocol stack. Each layer adds its header information to the data received from the layer above, creating a packet with header fields and a payload field.
