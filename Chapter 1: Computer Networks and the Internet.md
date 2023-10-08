@@ -181,3 +181,19 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 - **Traffic Intensity:** The traffic intensity (La/R) plays a vital role in estimating queuing delay. If it exceeds 1, queuing delay can approach infinity. It varies based on the rate of packet arrivals and the transmission rate.
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHd2b-31EKHc-W0Ah_HtMogmvFSs7LCK5p-2s6gK7o4h2dv7yao9fDUTvge6xrDnoPiVzIlly5XMmSi-l-sLOQST4M6NFGPxk7GSChBXEqVrqqEJD_ZESJ2vL-SSSzsXRw8dMtxXjAUJUIHuei8cA2j7=w1092-h888-s-no" width="600" height="400">
+
+> **Trace Route**: measure end-to-end delay in a computer network by tracing the route taken by packets and measuring round-trip delays to routers.
+
+> If the source receives fewer than three messages from any given router (due to packet loss in the network), Traceroute places an asterisk just after the router number and reports fewer than three round-trip times for that router.
+
+# 1.10 Throughput
+
+> If the file consists of F bits and the transfer takes T seconds for Host B to receive all F bits, then the average throughput of the file transfer is F/T bits/sec.
+
+- **Instantaneous vs. Average Throughput**: It explains the difference between instantaneous throughput (bits/sec at a given moment) and average throughput (bits/sec over the entire transfer).
+- **Two-Link Network**: In a simple network with two links, the throughput is determined by the slower link, which acts as the **bottleneck**.
+- **Multiple Links**: In a network with multiple links between source and destination, the throughput is limited by the slowest link along the path.
+- **Access Network**: In today's Internet, the access network is often the bottleneck for throughput due to over-provisioned core network links.
+- **Intervening Traffic**: Throughput can be affected by other data flows sharing the same link, even if the link has a high transmission rate.
+- **General Dependence**: Throughput depends not only on link transmission rates but also on intervening traffic, making it a more complex concept.
+
