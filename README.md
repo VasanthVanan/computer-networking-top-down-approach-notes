@@ -20,3 +20,7 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 * [1.7 Circuit Switching](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#17-circuit-switching)
 * [1.8 Networks of Networks](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#18-networks-of-networks)
 * [1.9 Delay, Loss, Throughput](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#19-delay-loss-throughput)
+* [1.10 Throughput]()
+* [1.11 Protocol Layers]()
+* [1.12 Networks Under Attack]()
+

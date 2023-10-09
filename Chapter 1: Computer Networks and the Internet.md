@@ -205,3 +205,14 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 - **Drawbacks of Layering**: Some argue against layering due to potential duplication of functionality and information dependencies between layers.
 - **Protocol Stack**: The protocols of different layers collectively form the protocol stack. The Internet protocol stack consists of five layers: physical, link, network, transport, and application layers.
 - **Encapsulation**: Data is encapsulated as it moves down the protocol stack. Each layer adds its header information to the data received from the layer above, creating a packet with header fields and a payload field.
+
+## 1.12 Networks Under Attack
+
+- **Malware Consequences:** Malware can have severe consequences, including file deletion, data theft (e.g., passwords and personal information), and turning compromised hosts into part of botnets used for malicious purposes.
+- **Self-Replicating Malware:** Many malware types are self-replicating, meaning they can infect one host and then spread to other hosts over the Internet, leading to exponential growth in infections.
+- **Types of DoS Attacks:** DoS attacks can be categorized into three types: `vulnerability attacks`, `bandwidth flooding`, and `connection flooding`. These attacks disrupt services or crash hosts.
+- **Distributed DoS (DDoS) Attacks**: In a DDoS attack, attackers control multiple sources to launch attacks, making them harder to detect and defend against.
+- **Cryptography Defense**: Cryptography is one of the defenses against packet sniffing. It can help secure communication channels and protect against eavesdropping.
+- **IP Spoofing**: Attackers can forge source addresses on packets, allowing them to masquerade as someone else. This is known as IP spoofing and presents a security challenge.
+- **End-Point Authentication**: To address IP spoofing and ensure message authenticity, end-point authentication mechanisms are needed. These mechanisms verify the source of messages.
+
