@@ -5,6 +5,7 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 [Chapter 1: Computer Networking and the Internet](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md)
+---
 
 * [1.1 A Nuts-and-Bolts Description (Infrastructure based Internet)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#11-a-nuts-and-bolts-description-infrastructure-based-internet)
 * [1.2 A Services Description (Service based Internet)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#12-a-services-description-service-based-internet)
@@ -20,7 +21,7 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 * [1.7 Circuit Switching](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#17-circuit-switching)
 * [1.8 Networks of Networks](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#18-networks-of-networks)
 * [1.9 Delay, Loss, Throughput](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#19-delay-loss-throughput)
-* [1.10 Throughput]()
-* [1.11 Protocol Layers]()
-* [1.12 Networks Under Attack]()
+* [1.10 Throughput](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#110-throughput)
+* [1.11 Protocol Layers](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#111-protocol-layers)
+* [1.12 Networks Under Attack](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#112-networks-under-attack)
 
