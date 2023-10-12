@@ -25,3 +25,18 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 * [1.11 Protocol Layers](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#111-protocol-layers)
 * [1.12 Networks Under Attack](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#112-networks-under-attack)
 
+[Chapter 2: Aplication Layer]()
+
+* [2.1 Principle of Network Applications]()
+* [2.2 Transport Services (TCP & UDP)]()
+* [2.3 Application Layer Protocol: Web and HTTP]()
+    * [2.3.1 Non-Persistent and Persistent Connections]()
+    * [2.3.2 HTTP Message Format]()
+    * [2.3.3 Cookies]()
+    * [2.3.4 Web Caching]()
+    * [2.3.4 HTTP/2]()
+* [2.4 Application Layer Protocol: SMTP]()
+    * [2.4.1 Email Components]()
+    * [2.4.2 SMTP Basics]()
+    * [2.4.3 Mail Message Structure]()
+    * [2.4.4 Mail Access Protocols]()

@@ -35,17 +35,152 @@
 - **Web Page Structure**: A web page typically includes a base HTML file and referenced objects like images, stylesheets, and videos. Objects are identified by URLs, which consist of a `hostname` and a `path name`.
 - **HTTP and TCP**: HTTP uses TCP (Transmission Control Protocol) as its underlying transport protocol. Clients initiate TCP connections with servers to exchange HTTP messages.
 
+> The HTTP client first initiates a TCP connection with the server. Once the connection is established, the browser and the server processes access TCP through their socket interfaces. 
+
 > HTTP need not worry about lost data or the details of how TCP recovers from loss or reordering of data within the network. 
 
 - **Stateless Protocol**: HTTP is a stateless protocol, meaning servers `don't store client-specific information.` If a client requests the same object multiple times, the server doesn't remember previous requests.
 - **HTTP Versions**: `HTTP/1.0` and `HTTP/1.1` are common versions, with HTTP/1.1 supporting persistent connections. Newer versions like HTTP/2 are also emerging.
-- **Non-Persistent and Persistent Connections**: Non-persistent connections create a new connection for each requested object. Persistent connections allow multiple objects to be sent over the same connection, improving efficiency.
+### 2.3.1 Non-Persistent and Persistent Connections 
+- Non-persistent connections create a new connection for each requested object. Persistent connections allow multiple objects to be sent over the same connection, improving efficiency.
 
 > Although HTTP uses persistent connections in its default mode, HTTP clients and servers can be configured to use non-persistent connections instead.
 
-- **HTTP Message Format**: HTTP messages have two types: `request messages` and `response messages`. Request messages include a method (e.g., GET), URL, and HTTP version, followed by header lines. Response messages include a `protocol version`, `status code` (e.g., 200 OK), and `header lines`, followed by the `entity body`.
-- **Header Lines**: Header lines provide additional information in HTTP messages. Examples of request headers include Host, Connection, User-agent, and Accept-language. Examples of response headers include Connection, Date, Server, Last-Modified, Content-Length, and Content-Type.
-- **Status Codes**: Status codes (e.g., 404 Not Found) indicate the result of an HTTP request.
+> round-trip time (RTT), which is the time it takes for a small packet to travel from client to server and then back to the client. The RTT includes packet-propagation delays, packet- queuing delays in intermediate routers and switches, and packet-processing delays.
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHcP6O3E33NG7QnDmzX1ZUYsYN4WdmaGZSwLxO79aCwgpc2VRQI5lV8oSDjGyga6BN6nbLTnXzZnfZe49s3o9JvbZT35Z1vqiUG1c97LMJbYwZwMhTgBitpNwl5znilEEFnGID7QpG4z98mGuwdk6xPg=w1456-h1130-s-no" width="520" height="520">
+
+- The three-way handshake involves the client and server exchanging messages, taking one round-trip time (RTT) for this process.
+- After completing the handshake, the client sends an HTTP request message along with an acknowledgment into the TCP connection.
+- The server responds by sending the HTML file over the established connection.
+- The total response time is approximately two RTTs plus the transmission time for the HTML file.
+
+### 2.3.2 HTTP Message Format: 
+
+- HTTP messages have two types: `request messages` and `response messages`. Request messages include a method (e.g., GET), URL, and HTTP version, followed by header lines. Response messages include a `protocol version`, `status code` (e.g., 200 OK), and `header lines`, followed by the `entity body`. [Click here for more info](https://github.com/VasanthVanan/web-application-hackers-handbook-notes/blob/main/Chapters/Chapter-3%20Web%20Application%20Technologies.md#311-http-requests)
+
+```http
+GET /somedir/page.html HTTP/1.1 \r\n
+Host: www.someschool.edu \r\n
+Connection: close \r\n
+User-agent: Mozilla/5.0 Accept-language: fr \r\n
+```
+
+```http
+HTTP/1.1 200 OK \r\n
+Connection: close \r\n
+Date: Tue, 18 Aug 2015 15:44:04 GMT \r\n
+Server: Apache/2.2.3 (CentOS) \r\n
+Last-Modified: Tue, 18 Aug 2015 15:11:03 GMT \r\n
+Content-Length: 6821 \r\n
+Content-Type: text/html \r\n
+\r\n
+
+(data data data data data ...)
+```
+
+- **Header Lines**: Header lines provide additional information in HTTP messages. Examples of request headers include `Host`, `Connection`, `User-agent`, and `Accept-language`. Examples of response headers include `Connection`, `Date`, `Server`, `Last-Modified`, `Content-Length`, and `Content-Type`.
+- **Status Codes**: Status codes (e.g., 404 Not Found) indicate the result of an HTTP request. [Click here for more info](https://github.com/VasanthVanan/web-application-hackers-handbook-notes/blob/main/Chapters/Chapter-3%20Web%20Application%20Technologies.md#318-status-codes)
 - **HTTP Methods**: HTTP includes methods like GET, POST, PUT, and DELETE for different types of requests and actions.
 - **Entity Body**: The entity body in HTTP messages contains data related to the request method.
+
+### 2.3.3 Cookies
+
+- There are situations where web sites need to identify users, for security or personalization purposes. HTTP uses cookies to achieve user identification and tracking.
+- Cookies have four components: a `cookie header` in HTTP `response` and `request` messages, a `cookie file` on the user's end system, and a `back-end database` on the web site.
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHfFwZxxD_q6lNIW4MotRBCCUUmdnTTAst3aa9ByyF1GoQxQGr9oMpd-3hudmL_VvIqWZhb9sF4Dsw3YYeV3N38qe-HBB9afByGpuvPj1gSfGeATqwiuckHdhRVluCOM_E_NXmqLYBN82wpku2x_BUd1=w1326-h1130-s-no" width="620" height="630">
+
+- Cookies work by sending a unique identification number in a `Set-cookie` header from the server to the user's browser.
+- The browser stores the identification number and sends it back to the server in a Cookie header with subsequent requests.
+- Cookies are used to track user activity and offer personalized services, like shopping carts or recommendations.
+- Users can be identified over multiple sessions by maintaining the same identification number in cookies.
+- Cookies are controversial due to potential privacy concerns, as websites can gather and potentially sell user information.
+
+### 2.3.4 Web Caching
+
+- Web caches, or proxy servers, handle HTTP requests on behalf of origin servers.
+- Caches store copies of requested objects, reducing the need to fetch them from the origin server.
+- Users can configure browsers to direct requests through caches for faster responses.
+- Caches serve as both servers (to clients) and clients (to servers) in the caching process.
+- Installed by ISPs and institutions, caches enhance performance and lower bandwidth costs.
+- Benefits include faster responses, reduced bandwidth upgrades, and decreased overall Internet traffic.
+- Content Distribution Networks (CDNs) use distributed caching to localize content delivery.
+
+> An HTTP request message is a so-called conditional GET message if (1) the request message uses the GET method and (2) the request message includes an If-Modified-Since: header line.
+
+- `Conditional GET` checks for freshness by comparing the `If-Modified-Since` header with object modification date.
+- If an object hasn't changed, a `304 Not Modified response` allows the cache to serve the locally cached object.
+
+> value of the If-modified-since: header line is exactly equal to the value of the Last-Modified: header line that was sent by the server initially.
+
+### 2.3.5 HTTP/2
+
+> The primary goals for HTTP/2 are to reduce perceived latency by enabling request and response multiplexing over a single TCP connection, provide request prioritization and server push, and provide efficient compression of HTTP header fields.
+
+- **HTTP/2 Motivation:** HTTP/1.1's persistent TCP connections caused HOL blocking. Browsers used multiple parallel TCP connections to work around this issue.
+- **HTTP/2 Solution (Framing):** Reduces the need for parallel TCP connections by breaking messages into frames and interleaving them, significantly reducing user-perceived delay. Includes binary frame encoding for efficiency.
+
+> The ability to break down an HTTP message into independent frames, inter- leave them, and then reassemble them on the other end is the single most important enhancement of HTTP/2.
+
+- **Message Prioritization:** Developers assign weights (1-256) to messages, and the server prioritizes higher-weight responses. Clients can specify message dependencies.
+- **Server Push:** Enables sending additional objects to the client without explicit requests, reducing latency.
+- **HTTP/3 and QUIC:** QUIC, a new transport protocol over UDP and supports features like message multiplexing, is used for HTTP/3. This streamlined design incorporates HTTP/2 features and leverages QUIC's advantages.
+
+## 2.4 Application Layer Protocol: SMTP
+
+> A typical message starts its journey in the sender’s user agent, then travels to the sender’s mail server, and then travels to the recipient’s mail server, where it is deposited in the recipient’s mailbox. Reattempts are often done every 30 minutes
+
+### 2.4.1 Email Components
+
+- **User Agents:** Tools like Microsoft Outlook, Apple Mail, and Gmail, allowing users to manage emails.
+- **Mail Servers:** The central infrastructure, hosting mailboxes for recipients like Bob.
+- **SMTP (Simple Mail Transfer Protocol):** The principal protocol to send emails between servers.
+
+### 2.4.2 SMTP Basics
+
+- SMTP transfers messages between sender and recipient mail servers at `Port 25`.
+- The client (sender's server) initiates a connection to the recipient's server via TCP.
+
+```http
+S: 220 hamburger.edu 
+C: HELO crepes.fr
+S: 250 Hello crepes.fr, pleased to meet you 
+C: MAIL FROM: <alice@crepes.fr>
+S: 250 alice@crepes.fr ... Sender ok
+C: RCPT TO: <bob@hamburger.edu>
+S: 250 bob@hamburger.edu ... Recipient ok
+C: DATA
+S: 354 Enter mail, end with ”.” on a line by itself 
+C: Do you like ketchup?
+C: How about pickles?
+C: .
+S: 250 Message accepted for delivery
+C: QUIT
+S: 221 hamburger.edu closing connection
+```
+
+- It introduces the sender and recipient, transmits the message, and uses a persistent connection for multiple messages.
+
+### 2.4.3 Mail Message Structure
+
+- Email messages consist of a `header` and a `body`.
+- The header includes sender and recipient information, such as `"From," "To," and "Subject."`. The header lines and the body of the message are separated by a blank line (that is, by CRLF).
+- These headers are distinct from SMTP commands used for server handshake communication.
+
+```http
+From: alice@crepes.fr
+To: bob@hamburger.edu
+Subject: Searching for the meaning of life.
+```
+
+### 2.4.4 Mail Access Protocols
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHe0fyv4ULp_uamEsceCVVhVIa89gH-EYeg8F5QQ9MJOB6_HPfvS8QpwFXnBbpd_o5WBJf3SYSGt_KwkgMRBQ0BUtFHZP6lTTLAvPlWIfoypiutfj2fm5ZktaSNOuMKNcfdEXXH7OafVuFbqC-vIcfa4=w1876-h442-s-no" width="680" height="220">
+
+> Bob’s user agent can’t use SMTP to obtain the messages because obtaining the messages is a pull operation, whereas SMTP is a push protocol.
+
+- Users retrieve their email messages from a shared mail server using either HTTP or IMAP.
+- HTTP is often used for web-based email clients like Gmail, while IMAP is common with clients like Microsoft Outlook.
+- Both the HTTP & IMAP approaches allow to manage folders, move messages to folders, delete messages, mark messages as important, and so on.
 
