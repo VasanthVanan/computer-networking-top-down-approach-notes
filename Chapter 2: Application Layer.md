@@ -184,3 +184,71 @@ Subject: Searching for the meaning of life.
 - HTTP is often used for web-based email clients like Gmail, while IMAP is common with clients like Microsoft Outlook.
 - Both the HTTP & IMAP approaches allow to manage folders, move messages to folders, delete messages, mark messages as important, and so on.
 
+## 2.5 Application Layer Protocol: DNS
+
+- DNS is an essential service that translates human-friendly hostnames into IP addresses.
+- It's a distributed database and an application-layer protocol, implemented with `DNS servers`, often running `BIND` software and runs over UDP and uses port 53.
+
+> People prefer the more mnemonic hostname identifier, while routers prefer fixed-length, hierarchically structured IP addresses.
+
+- DNS services include:
+    - **hostname aliasing**: host with a complicated canonical hostname can have one or more alias names.
+    - **Mail Server Aliasing**: DNS resolves alias hostnames to canonical forms and retrieves corresponding IP addresses.
+    - **Load Distribution**: DNS balances traffic among replicated servers by rotating IP addresses within replies, ensuring even distribution. This technique is also applied to email servers with shared alias names.
+
+### 2.5.1 How DNS Works: High-Level Overview
+
+> gethostbyname() is the function call that an application calls in order to perform the translation.
+
+- DNS operates through query and reply messages using UDP datagrams on port 53.
+- DNS queries involve multiple servers globally distributed.
+- A simple centralized design for DNS is not feasible due to scalability issues.
+- Issues with centralized design: `single point of failure,` `high traffic volume`, `distant database`, and `maintenance`.
+- DNS uses a hierarchical structure and a distributed database., to handle the vast number of hosts on the Internet.
+
+### 2.5.2 Distributed, Hierarchical Database
+
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHfjtoFE2ozufMyfFi_xvvvjhwhvWHxaFcgn2jVCEG50nQsaQlTqhQQovC1HaJrlB0h8La--jGtCdoz8c6RxZVLsou9ISfsTEy7uaS-fjCMZNBiZtfTPnFpbVbYUDbQ49wyFPKQJJNUc-_7h4wmYm2IX=w1920-h710-s-no" width="580" height="220">
+
+- DNS uses three classes of servers: `Root` DNS servers, `top-level domain (TLD)` DNS servers, and `authoritative` DNS servers.
+- Root DNS servers provide IP addresses for TLD servers. TLD servers provide IP addresses for authoritative DNS servers Authoritative DNS servers store DNS records for specific organizations.
+- A `local DNS server`, specific to an ISP, also plays a crucial role in DNS queries. It cache DNS information to reduce query traffic and improve performance.
+
+> When a host makes a DNS query, the query is sent to the local DNS server, which acts a proxy, forwarding the query into the DNS server hierarchy.
+
+- DNS extensively utilizes caching to enhance performance. These are stored temporarily and it allows DNS servers to quickly respond to subsequent queries for the same hostname.
+
+### 2.5.3 Recursive vs Iterative DNS Queries
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHcDzbK4FY8RExEyQO82XsXu_OFQXOqMXfJx6q8TO_Tx4wYRJt9WaiktQr-4bF482giEXJmGfkLMszdS7Ufn_sjYphuuVOdpKVn7RI6laoHLFKiPUtFpU_kOUnZ_UJN7NjeJdt5Bp65KPlNKkiEpFrIF=w1708-h1044-s-no" width="780" height="520">
+
+### 2.5.4 DNS Records & Messages
+
+- DNS servers store resource records (RRs) in the distributed database.
+- A resource record (RR) is a four-tuple: `(Name, Value, Type, TTL)`.
+- **TTL** (Time to Live) determines when a resource should be removed from a cache.
+- Types of resource records:
+    - `Type=A`: Maps hostname to IP address.
+    - `Type=NS`: Maps a domain to the hostname of an authoritative DNS server.
+    - `Type=CNAME`: Provides the canonical name for an alias hostname.
+    - `Type=MX`: Maps to the canonical name of a mail server with an alias hostname.
+
+> To obtain the canonical name for the mail server, a DNS client would query for an MX record; to obtain the canonical name for the other server, the DNS client would query for the CNAME record.
+
+- DNS messages have a header section with several fields, including `query/reply` flags, `recursion` flags, and more.
+- DNS messages consist of a question section, answer section (resource records), authority section, and additional section.
+
+> A 1-bit query/reply flag indi- cates whether the message is a query (0) or a reply (1). A 1-bit authoritative flag is set in a reply message when a DNS server is an authoritative server for a queried name. 
+
+> A 1-bit recursion desired flag is set when a client (host or DNS server) desires that the DNS server perform recursion when it doesn’t have the record. 
+
+> A 1-bit recursion-available field is set in a reply if the DNS server supports recursion. 
+
+### 2.5.5 Inserting Records to DNS Database
+
+> A registrar is a commercial entity that verifies the uniqueness of the domain name, enters the domain name into the DNS database (as discussed below), and collects a small fee from you for its services.
+
+- To register a domain name, you need to provide registrar with DNS server names and IP addresses. Registrar enters `Type NS` and `Type A` resource records for `authoritative` DNS servers into `TLD` servers.
+- Additional resource records, like Type A and Type MX, must be added for Web and mail servers.
+
