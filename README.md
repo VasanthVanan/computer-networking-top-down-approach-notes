@@ -45,7 +45,7 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
     * [2.4.4 Mail Access Protocols](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md#244-mail-access-protocols)
 * [2.5 Application Layer Protocol: DNS](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md#25-application-layer-protocol-dns)
     * [2.5.1 How DNS Works: High-Level Overview](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md#251-how-dns-works-high-level-overview)
-    * [2.5.2 Distributed, Hierarchical Database]()
+    * [2.5.2 Distributed, Hierarchical Database](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md#252-distributed-hierarchical-database)
     * [2.5.3 Recursive vs Iterative DNS Queries](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md#253-recursive-vs-iterative-dns-queries)
     * [2.5.4 DNS Records & Messages](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md#254-dns-records--messages)
     * [2.5.5 Inserting Records to DNS Database](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md#255-inserting-records-to-dns-database)
