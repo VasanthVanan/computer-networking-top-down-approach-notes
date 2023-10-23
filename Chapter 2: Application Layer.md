@@ -2,9 +2,9 @@
 
 ## 2.1 Principle of Network Applications
 
-- **Client-Server Architecture**: In a client-server architecture, there is a dedicated server that services requests from multiple client hosts. Clients do not directly communicate with each other but interact with the server. The server has a fixed, well-known IP address. Examples include the Web, FTP, Telnet, and email.
+- **Client-Server Architecture**: In a client server architecture, there is a dedicated server that services requests from multiple client hosts. Clients do not directly communicate with each other but interact with the server. The server has a fixed, well-known IP address. Examples include the Web, FTP, Telnet, and email.
 - **Peer-to-Peer (P2P) Architecture**: In a P2P architecture, there is minimal reliance on dedicated servers in data centers. Peers, which are intermittently connected hosts, communicate directly with each other without a dedicated server intermediary.
-- **P2P Scalability**: P2P architectures offer self-scalability, with peers contributing service capacity by distributing files to other peers. They are cost-effective and do not require significant server infrastructure.
+- **P2P Scalability**: P2P architectures offer self scalability, with peers contributing service capacity by distributing files to other peers. They are cost effective and do not require significant server infrastructure.
 - **Challenges of P2P Architectures**: P2P applications face challenges related to security, performance, and reliability due to their highly decentralized structure.
 - **Communication Between Processes**: Processes running on different end systems communicate with each other by exchanging messages across the computer network.
 - **Socket**: Messages sent between processes must pass through the network using a software interface called a `socket`. A socket is analogous to a door through which a process sends and receives messages.
@@ -17,21 +17,21 @@
 
 ## 2.2 Transport Services (TCP & UDP)
 
-- **Choosing a Transport-Layer Protocol**: When developing an application, you must choose a transport-layer protocol that suits your application's needs. The choice is typically based on services such as reliable data transfer, throughput, timing, and security.
+- **Choosing a Transport Layer Protocol**: When developing an application, you must choose a transport layer protocol that suits your application's needs. The choice is typically based on services such as reliable data transfer, throughput, timing, and security.
 - **Reliable Data Transfer**: Reliable data transfer ensures that data sent by one end is delivered correctly and completely to the other end. Some applications require this service to prevent data loss, while others like multimedia apps can tolerate some loss.
-- **Throughput**: Throughput is the rate at which bits are delivered from the sender to the receiver in a communication session. Bandwidth-sensitive applications need guaranteed throughput.
-- **Timing**: Timing guarantees are essential for real-time applications like Internet telephony, teleconferencing, and multiplayer games. Low delay is crucial for their effectiveness.
+- **Throughput**: Throughput is the rate at which bits are delivered from the sender to the receiver in a communication session. Bandwidth sensitive applications need guaranteed throughput.
+- **Timing**: Timing guarantees are essential for real time applications like Internet telephony, teleconferencing, and multiplayer games. Low delay is crucial for their effectiveness.
 - **Security**: Transport protocols can provide security services like encryption for confidentiality, data integrity, and end-point authentication.
-- **UDP and TCP**: The Internet offers two transport-layer protocols: UDP and TCP. UDP is lightweight and provides unreliable data transfer, while TCP offers reliable data transfer and connection-oriented services.
-- **Services Not Provided**: Neither UDP nor TCP provide throughput or timing guarantees, which means the Internet cannot guarantee specific timing or throughput for time-sensitive applications.
+- **UDP and TCP**: The Internet offers two transport layer protocols: UDP and TCP. UDP is lightweight and provides unreliable data transfer, while TCP offers reliable data transfer and connection oriented services.
+- **Services Not Provided**: Neither UDP nor TCP provide throughput or timing guarantees, which means the Internet cannot guarantee specific timing or throughput for time sensitive applications.
 
-> the Internet community has developed an enhancement for TCP, called Transport Layer Security (TLS) [RFC 5246]. TCP-enhanced-with-TLS not only does everything that traditional TCP does but also provides critical process-to- process security services, including encryption, data integrity, and end-point authenti- cation.
+> the Internet community has developed an enhancement for TCP, called Transport Layer Security (TLS) [RFC 5246]. TCP enhanced with TLS not only does everything that traditional TCP does but also provides critical process to process security services, including encryption, data integrity, and end point authentication.
 
 > In particular, if an application wants to use the services of TLS, it needs to include TLS code (existing, highly optimized librar- ies and classes) in both the client and server sides of the application. TLS has its own socket API that is similar to the traditional TCP socket API. 
 
 ## 2.3 Application Layer Protocol: Web and HTTP
 
-- **HTTP**: `HTTP (HyperText Transfer Protocol)` is the primary application-layer protocol of the World Wide Web. It relies on client and server programs that communicate by exchanging HTTP messages. Web pages are composed of objects, which are individual files with unique URLs.
+- **HTTP**: `HTTP (HyperText Transfer Protocol)` is the primary application layer protocol of the World Wide Web. It relies on client and server programs that communicate by exchanging HTTP messages. Web pages are composed of objects, which are individual files with unique URLs.
 - **Web Page Structure**: A web page typically includes a base HTML file and referenced objects like images, stylesheets, and videos. Objects are identified by URLs, which consist of a `hostname` and a `path name`.
 - **HTTP and TCP**: HTTP uses TCP (Transmission Control Protocol) as its underlying transport protocol. Clients initiate TCP connections with servers to exchange HTTP messages.
 
@@ -39,18 +39,18 @@
 
 > HTTP need not worry about lost data or the details of how TCP recovers from loss or reordering of data within the network. 
 
-- **Stateless Protocol**: HTTP is a stateless protocol, meaning servers `don't store client-specific information.` If a client requests the same object multiple times, the server doesn't remember previous requests.
+- **Stateless Protocol**: HTTP is a stateless protocol, meaning servers `don't store client specific information.` If a client requests the same object multiple times, the server doesn't remember previous requests.
 - **HTTP Versions**: `HTTP/1.0` and `HTTP/1.1` are common versions, with HTTP/1.1 supporting persistent connections. Newer versions like HTTP/2 are also emerging.
-### 2.3.1 Non-Persistent and Persistent Connections 
-- Non-persistent connections create a new connection for each requested object. Persistent connections allow multiple objects to be sent over the same connection, improving efficiency.
+### 2.3.1 Non Persistent and Persistent Connections 
+- Non persistent connections create a new connection for each requested object. Persistent connections allow multiple objects to be sent over the same connection, improving efficiency.
 
-> Although HTTP uses persistent connections in its default mode, HTTP clients and servers can be configured to use non-persistent connections instead.
+> Although HTTP uses persistent connections in its default mode, HTTP clients and servers can be configured to use non persistent connections instead.
 
-> round-trip time (RTT), which is the time it takes for a small packet to travel from client to server and then back to the client. The RTT includes packet-propagation delays, packet- queuing delays in intermediate routers and switches, and packet-processing delays.
+> round trip time (RTT), which is the time it takes for a small packet to travel from client to server and then back to the client. The RTT includes packet propagation delays, packet queuing delays in intermediate routers and switches, and packet processing delays.
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHcP6O3E33NG7QnDmzX1ZUYsYN4WdmaGZSwLxO79aCwgpc2VRQI5lV8oSDjGyga6BN6nbLTnXzZnfZe49s3o9JvbZT35Z1vqiUG1c97LMJbYwZwMhTgBitpNwl5znilEEFnGID7QpG4z98mGuwdk6xPg=w1456-h1130-s-no" width="520" height="520">
 
-- The three-way handshake involves the client and server exchanging messages, taking one round-trip time (RTT) for this process.
+- The three way handshake involves the client and server exchanging messages, taking one round trip time (RTT) for this process.
 - After completing the handshake, the client sends an HTTP request message along with an acknowledgment into the TCP connection.
 - The server responds by sending the HTML file over the established connection.
 - The total response time is approximately two RTTs plus the transmission time for the HTML file.
@@ -87,7 +87,7 @@ Content-Type: text/html \r\n
 ### 2.3.3 Cookies
 
 - There are situations where web sites need to identify users, for security or personalization purposes. HTTP uses cookies to achieve user identification and tracking.
-- Cookies have four components: a `cookie header` in HTTP `response` and `request` messages, a `cookie file` on the user's end system, and a `back-end database` on the web site.
+- Cookies have four components: a `cookie header` in HTTP `response` and `request` messages, a `cookie file` on the user's end system, and a `back end database` on the web site.
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHfFwZxxD_q6lNIW4MotRBCCUUmdnTTAst3aa9ByyF1GoQxQGr9oMpd-3hudmL_VvIqWZhb9sF4Dsw3YYeV3N38qe-HBB9afByGpuvPj1gSfGeATqwiuckHdhRVluCOM_E_NXmqLYBN82wpku2x_BUd1=w1326-h1130-s-no" width="620" height="630">
 
@@ -107,7 +107,7 @@ Content-Type: text/html \r\n
 - Benefits include faster responses, reduced bandwidth upgrades, and decreased overall Internet traffic.
 - Content Distribution Networks (CDNs) use distributed caching to localize content delivery.
 
-> An HTTP request message is a so-called conditional GET message if (1) the request message uses the GET method and (2) the request message includes an If-Modified-Since: header line.
+> An HTTP request message is a so called conditional GET message if (1) the request message uses the GET method and (2) the request message includes an If-Modified-Since: header line.
 
 - `Conditional GET` checks for freshness by comparing the `If-Modified-Since` header with object modification date.
 - If an object hasn't changed, a `304 Not Modified response` allows the cache to serve the locally cached object.
@@ -119,11 +119,11 @@ Content-Type: text/html \r\n
 > The primary goals for HTTP/2 are to reduce perceived latency by enabling request and response multiplexing over a single TCP connection, provide request prioritization and server push, and provide efficient compression of HTTP header fields.
 
 - **HTTP/2 Motivation:** HTTP/1.1's persistent TCP connections caused HOL blocking. Browsers used multiple parallel TCP connections to work around this issue.
-- **HTTP/2 Solution (Framing):** Reduces the need for parallel TCP connections by breaking messages into frames and interleaving them, significantly reducing user-perceived delay. Includes binary frame encoding for efficiency.
+- **HTTP/2 Solution (Framing):** Reduces the need for parallel TCP connections by breaking messages into frames and interleaving them, significantly reducing user perceived delay. Includes binary frame encoding for efficiency.
 
-> The ability to break down an HTTP message into independent frames, inter- leave them, and then reassemble them on the other end is the single most important enhancement of HTTP/2.
+> The ability to break down an HTTP message into independent frames, inter leave them, and then reassemble them on the other end is the single most important enhancement of HTTP/2.
 
-- **Message Prioritization:** Developers assign weights (1-256) to messages, and the server prioritizes higher-weight responses. Clients can specify message dependencies.
+- **Message Prioritization:** Developers assign weights (1-256) to messages, and the server prioritizes higher weight responses. Clients can specify message dependencies.
 - **Server Push:** Enables sending additional objects to the client without explicit requests, reducing latency.
 - **HTTP/3 and QUIC:** QUIC, a new transport protocol over UDP and supports features like message multiplexing, is used for HTTP/3. This streamlined design incorporates HTTP/2 features and leverages QUIC's advantages.
 
@@ -181,22 +181,22 @@ Subject: Searching for the meaning of life.
 > Bob’s user agent can’t use SMTP to obtain the messages because obtaining the messages is a pull operation, whereas SMTP is a push protocol.
 
 - Users retrieve their email messages from a shared mail server using either HTTP or IMAP.
-- HTTP is often used for web-based email clients like Gmail, while IMAP is common with clients like Microsoft Outlook.
+- HTTP is often used for web based email clients like Gmail, while IMAP is common with clients like Microsoft Outlook.
 - Both the HTTP & IMAP approaches allow to manage folders, move messages to folders, delete messages, mark messages as important, and so on.
 
 ## 2.5 Application Layer Protocol: DNS
 
-- DNS is an essential service that translates human-friendly hostnames into IP addresses.
-- It's a distributed database and an application-layer protocol, implemented with `DNS servers`, often running `BIND` software and runs over UDP and uses port 53.
+- DNS is an essential service that translates human friendly hostnames into IP addresses.
+- It's a distributed database and an application layer protocol, implemented with `DNS servers`, often running `BIND` software and runs over UDP and uses port 53.
 
-> People prefer the more mnemonic hostname identifier, while routers prefer fixed-length, hierarchically structured IP addresses.
+> People prefer the more mnemonic hostname identifier, while routers prefer fixed length, hierarchically structured IP addresses.
 
 - DNS services include:
     - **hostname aliasing**: host with a complicated canonical hostname can have one or more alias names.
     - **Mail Server Aliasing**: DNS resolves alias hostnames to canonical forms and retrieves corresponding IP addresses.
     - **Load Distribution**: DNS balances traffic among replicated servers by rotating IP addresses within replies, ensuring even distribution. This technique is also applied to email servers with shared alias names.
 
-### 2.5.1 How DNS Works: High-Level Overview
+### 2.5.1 How DNS Works: High Level Overview
 
 > gethostbyname() is the function call that an application calls in order to perform the translation.
 
@@ -211,7 +211,7 @@ Subject: Searching for the meaning of life.
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHfjtoFE2ozufMyfFi_xvvvjhwhvWHxaFcgn2jVCEG50nQsaQlTqhQQovC1HaJrlB0h8La--jGtCdoz8c6RxZVLsou9ISfsTEy7uaS-fjCMZNBiZtfTPnFpbVbYUDbQ49wyFPKQJJNUc-_7h4wmYm2IX=w1920-h710-s-no" width="580" height="220">
 
-- DNS uses three classes of servers: `Root` DNS servers, `top-level domain (TLD)` DNS servers, and `authoritative` DNS servers.
+- DNS uses three classes of servers: `Root` DNS servers, `top level domain (TLD)` DNS servers, and `authoritative` DNS servers.
 - Root DNS servers provide IP addresses for TLD servers. TLD servers provide IP addresses for authoritative DNS servers Authoritative DNS servers store DNS records for specific organizations.
 - A `local DNS server`, specific to an ISP, also plays a crucial role in DNS queries. It cache DNS information to reduce query traffic and improve performance.
 
@@ -226,7 +226,7 @@ Subject: Searching for the meaning of life.
 ### 2.5.4 DNS Records & Messages
 
 - DNS servers store resource records (RRs) in the distributed database.
-- A resource record (RR) is a four-tuple: `(Name, Value, Type, TTL)`.
+- A resource record (RR) is a four tuple: `(Name, Value, Type, TTL)`.
 - **TTL** (Time to Live) determines when a resource should be removed from a cache.
 - Types of resource records:
     - `Type=A`: Maps hostname to IP address.
@@ -239,11 +239,11 @@ Subject: Searching for the meaning of life.
 - DNS messages have a header section with several fields, including `query/reply` flags, `recursion` flags, and more.
 - DNS messages consist of a question section, answer section (resource records), authority section, and additional section.
 
-> A 1-bit query/reply flag indi- cates whether the message is a query (0) or a reply (1). A 1-bit authoritative flag is set in a reply message when a DNS server is an authoritative server for a queried name. 
+> A 1 bit query/reply flag indicates whether the message is a query (0) or a reply (1). A 1 bit authoritative flag is set in a reply message when a DNS server is an authoritative server for a queried name. 
 
-> A 1-bit recursion desired flag is set when a client (host or DNS server) desires that the DNS server perform recursion when it doesn’t have the record. 
+> A 1 bit recursion desired flag is set when a client (host or DNS server) desires that the DNS server perform recursion when it doesn’t have the record. 
 
-> A 1-bit recursion-available field is set in a reply if the DNS server supports recursion. 
+> A 1 bit recursion available field is set in a reply if the DNS server supports recursion. 
 
 ### 2.5.5 Inserting Records to DNS Database
 

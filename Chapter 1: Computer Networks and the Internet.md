@@ -4,11 +4,11 @@
 
 - The Internet connects billions of computing devices worldwide, including traditional computers, smartphones, and various nontraditional devices.
 - The term "**hosts**" or "**end systems**" refers to all connected devices. Each End systems are interconnected by a network of communication links and packet switches.
-- Packet switches, such as routers and link-layer switches, forward packets to their destinations.
+- Packet switches, such as routers and link layer switches, forward packets to their destinations.
 - The sequence of links and switches a packet traverses is called a **route** or **path** through the network.
-- Packet-switched networks are compared to transportation networks, with packets analogous to trucks and communication links to highways and roads.
+- Packet switched networks are compared to transportation networks, with packets analogous to trucks and communication links to highways and roads.
 - End systems access the Internet through various types of **Internet Service Providers (ISPs)**, including residential, corporate, university, WiFi, and cellular data ISPs.
-- ISPs connect to content providers, and lower-tier ISPs are interconnected through national and international upper-tier ISPs.
+- ISPs connect to content providers, and lower tier ISPs are interconnected through national and international upper tier ISPs.
 - Internet protocols, such as TCP and IP, govern data transmission within the Internet, collectively known as TCP/IP.
 Internet standards, developed by the ```Internet Engineering Task Force (IETF)``` and documented as requests for comments (**RFCs**), ensure interoperability.
 - There are nearly 9000 RFCs defining various Internet protocols, and other bodies specify standards for network components, such as the **IEEE** 802 LAN Standards Committee for Ethernet and WiFi.
@@ -42,9 +42,9 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 - The two most common broadband residential access types are **DSL** and **cable**.
 - DSL is often provided by the local telephone company, acting as `both telco and ISP`.
 - DSL connections involve DSL modems at homes communicating with a DSLAM at the telco's central office.
-- DSL allows data and telephone signals to share the same line using frequency-division multiplexing.
+- DSL allows data and telephone signals to share the same line using frequency division multiplexing.
 - Splitters at the customer's end and DSLAMs at the telco end manage signal separation.
-- DSL offers varying transmission rates, both downstream and upstream, with the potential for high-speed access.
+- DSL offers varying transmission rates, both downstream and upstream, with the potential for high speed access.
 - DSL access can be asymmetric, with different rates for downstream and upstream.
 - Achievable rates may be lower due to distance, line quality, and provider limitations.
 - DSL is best suited for short distances from the central office, typically within 5 to 10 miles.
@@ -67,8 +67,8 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 
 ### 1.4.3 Home Access: FTTH 
 
-- Fiber to the home (FTTH) is a technology providing high-speed residential broadband access via optical fiber.
-- FTTH can offer gigabit-per-second internet speeds.
+- Fiber to the home (FTTH) is a technology providing high speed residential broadband access via optical fiber.
+- FTTH can offer gigabit per second internet speeds.
 - Optical distribution networks for FTTH include direct fiber and shared fibers.
 - Shared fiber networks use two architectures: **active optical networks (AON)** and **passive optical networks (PON)**.
 - PON is used in Verizon's FiOS service and involves optical **network terminators (ONTs)** connected to a neighborhood splitter.
@@ -81,14 +81,14 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 
 ### 1.4.4 Home Access: 5G Fixed Wireless
 
-- 5G fixed wireless is an emerging technology for high-speed residential access.
+- 5G fixed wireless is an emerging technology for high speed residential access.
 - It eliminates the need for **costly** and **unreliable cabling** from the telco's central office (CO) to homes.
-- Data is sent wirelessly from a provider's base station to a modem in the home using beam-forming technology.
+- Data is sent wirelessly from a provider's base station to a modem in the home using beam forming technology.
 - A WiFi wireless router is connected to the modem, similar to cable or DSL modem setups.
 
 ### 1.4.5 Enterprise & Home Access: Ethernet, WiFi
 
-- Ethernet is the predominant LAN technology, using twisted-pair copper wire with access speeds from 100 Mbps to tens of Gbps.
+- Ethernet is the predominant LAN technology, using twisted pair copper wire with access speeds from 100 Mbps to tens of Gbps.
 - Wireless LAN users connect to an access point, which is linked to the enterprise's network (usually via wired Ethernet).
 - IEEE 802.11 (WiFi) is widely used for wireless LAN access with shared transmission rates exceeding 100 Mbps.
 - Ethernet and WiFi are used not only in enterprise settings but also in home networks.
@@ -98,36 +98,36 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 
 - Network access technologies in the Internet use various physical media, including fiber cable, coaxial cable, copper wire, and radio spectrum.
 
->  Physical media fall into two categories: guided media and unguided media. With guided media, the waves are guided along a solid medium, such as a fiber-optic cable, a twisted-pair copper wire, or a coaxial cable. With unguided media, the waves propagate in the atmosphere and in outer space, such as in a wireless LAN or a digital satellite channel.
+>  Physical media fall into two categories: guided media and unguided media. With guided media, the waves are guided along a solid medium, such as a fiber optic cable, a twisted pair copper wire, or a coaxial cable. With unguided media, the waves propagate in the atmosphere and in outer space, such as in a wireless LAN or a digital satellite channel.
 
 - Installation labor costs for physical links can be significantly higher than material costs, motivating builders to install multiple types of media to save on future wiring expenses.
-- **Twisted-pair copper wire** is a common guided transmission medium, widely used in telephone networks and LANs. It consists of two insulated copper wires twisted together to **reduce interference**. Data rates for LANs range from 10 Mbps to 10 Gbps.
-- Twisted-pair technology, like category 6a cable, can achieve data rates of 10 Gbps for short distances, making it a dominant solution for high-speed LAN networking.
-- **Coaxial cable** consists of `two concentric copper conductors` and is commonly used in cable television systems. Coupled with cable modems, it provides high-speed Internet access at rates of hundreds of Mbps.
+- **Twisted pair copper wire** is a common guided transmission medium, widely used in telephone networks and LANs. It consists of two insulated copper wires twisted together to **reduce interference**. Data rates for LANs range from 10 Mbps to 10 Gbps.
+- Twisted pair technology, like category 6a cable, can achieve data rates of 10 Gbps for short distances, making it a dominant solution for high speed LAN networking.
+- **Coaxial cable** consists of `two concentric copper conductors` and is commonly used in cable television systems. Coupled with cable modems, it provides high speed Internet access at rates of hundreds of Mbps.
 - Coaxial cable can serve as a guided shared medium, allowing multiple end systems to connect directly to the cable and receive signals sent by other end systems.
 
 > In cable television and cable Internet access, the transmitter shifts the digital signal to a specific frequency band, and the resulting analog signal is sent from the transmitter to one or more receivers.
 
 - **Optical fibers** conduct light pulses as bits and offer high data rates, low attenuation, and resistance to interference.
-- Fiber optics are ideal for long-distance transmission but costly for short-haul applications.
+- Fiber optics are ideal for long distance transmission but costly for short haul applications.
 
 - **Terrsetial Radio channels** are wireless and versatile, influenced by propagation environment and distance.
-- Three categories of terrestrial radio channels: `short-range,` `local-area`, and `wide-area`.
+- Three categories of terrestrial radio channels: `short range,` `local area`, and `wide area`.
 - Radio channel characteristics include `path loss`, `shadow fading`, `multipath fading`, and `interference`.
 
-- **Satellite communication** involves `geostationary` and `low-earth orbiting (LEO)` satellites.
+- **Satellite communication** involves `geostationary` and `low earth orbiting (LEO)` satellites.
 - Geostationary satellites stay fixed above one spot on Earth but introduce signal propagation delay.
 - LEO satellites are closer to Earth, move in orbits, and may require multiple satellites for continuous coverage.
-- Satellite links offer high speeds and serve areas without DSL or cable-based Internet access.
+- Satellite links offer high speeds and serve areas without DSL or cable based Internet access.
 
-## 1.6 Packet Switching (Store-and-Forward Transmission)
+## 1.6 Packet Switching (Store and forward Transmission)
 
-- Most packet switches use **store-and-forward** transmission.
+- Most packet switches use **store and forward** transmission.
 - Packet switch must receive the entire packet before transmission.
 
-> Because the router employs store-and-forwarding, at this instant of time, the router cannot transmit the bits it has received; instead it must first buffer (i.e., “store”) the packet’s bits. Only after the router has received all of the packet’s bits can it begin to transmit (i.e., “forward”) the packet onto the outbound link
+> Because the router employs store and forwarding, at this instant of time, the router cannot transmit the bits it has received; instead it must first buffer (i.e., “store”) the packet’s bits. Only after the router has received all of the packet’s bits can it begin to transmit (i.e., “forward”) the packet onto the outbound link
 
-- `Delay = 2L/R` for a simple source-destination network.
+- `Delay = 2L/R` for a simple source destination network.
 - General delay formula for N links each of rate R: `d = N * (L/R)`.
 
 - **Queuing Delays and Packet Loss:** Packet switches have output buffers (output queues).
@@ -145,24 +145,24 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 
 ## 1.7 Circuit Switching
 
-> In circuit-switched networks, the resources needed along a path (buffers, link transmission rate) to provide for communication between the end systems are reserved for the duration of the communication session between the end systems.
+> In circuit switched networks, the resources needed along a path (buffers, link transmission rate) to provide for communication between the end systems are reserved for the duration of the communication session between the end systems.
 
-- Circuit-switched networks reserve resources (buffers, link transmission rate) for the entire communication session, while packet-switched networks use resources on-demand and may involve queuing.
-- Traditional telephone networks are examples of circuit-switched networks, where circuits are established and transmission rate is reserved for the entire connection.
-- **Multiplexing in circuit-switched networks** can use `frequency-division multiplexing (FDM)` or `time-division multiplexing (TDM)`.
+- Circuit switched networks reserve resources (buffers, link transmission rate) for the entire communication session, while packet switched networks use resources on demand and may involve queuing.
+- Traditional telephone networks are examples of circuit switched networks, where circuits are established and transmission rate is reserved for the entire connection.
+- **Multiplexing in circuit switched networks** can use `frequency division multiplexing (FDM)` or `time division multiplexing (TDM)`.
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHcnymJYAUF4Fn1TBsyIZwgZJ6JIBFewHZxR1y6w26eel_YuQjD32j5gqkJZ-NqMjqr32WXra6HCaP_Z9-HXc6oKcrzDifgPrrmuGzS7ec1I4rjT_R5SEviCfBTv0nLAHwlFcVUsi1hTgfto2b6-cU4q=w1482-h1088-s-no" width="600" height="400">
 
 >  FDM, the frequency domain is segmented into four bands, each of bandwidth 4 kHz. For TDM, the time domain is segmented into frames, with four time slots in each frame.
 
 - Packet switching is seen as more efficient because it doesn't reserve resources during idle periods, while circuit switching does.
-- Packet switching allows better sharing of transmission capacity and is simpler and more cost-effective than circuit switching.
-- Packet switching allocates link use on demand, while circuit switching pre-allocates link use regardless of demand.
+- Packet switching allows better sharing of transmission capacity and is simpler and more cost effective than circuit switching.
+- Packet switching allocates link use on demand, while circuit switching pre allocates link use regardless of demand.
 
 ## 1.8 Networks of Networks
 
-- **Network Structures:** Various network structures are discussed, including global transit ISPs, regional ISPs, and tier-1 ISPs.
-- **Peering:** ISPs can peer, enabling direct traffic exchange without payment. Tier-1 ISPs also peer.
+- **Network Structures:** Various network structures are discussed, including global transit ISPs, regional ISPs, and tier 1 ISPs.
+- **Peering:** ISPs can peer, enabling direct traffic exchange without payment. Tier 1 ISPs also peer.
 - **IXPs:** Internet Exchange Points facilitate ISPs' direct connections, enhancing efficiency.
 - **Content Provider Networks:** Large providers like Google create their networks for control and cost reduction.
 
@@ -173,27 +173,27 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 <img src="https://lh3.googleusercontent.com/pw/ADCreHfL-nbDiTeiYVwKehMcZPCWS4vbdLyINcp3vKml8sDHzFSTYe1VwuexfmBm7WMuOcHHtZM3jBvRVSjVQPA5Nf3_UIDoQ0kpJrBEbwNwm-aBnnEFXz7mxgiKweHMy39iecCa53_7H2PxFA-5-pKN45Dq=w1920-h812-s-no" width="700" height="300">
 
 - **Types of Delays:** Several types of delays affect packets during their journey, including nodal processing delay, queuing delay, transmission delay, and propagation delay.
-- **Processing Delay:** Part of the processing delay includes examining the packet's header and checking for bit-level errors. High-speed routers have processing delays typically in microseconds.
+- **Processing Delay:** Part of the processing delay includes examining the packet's header and checking for bit level errors. High speed routers have processing delays typically in microseconds.
 - **Queuing Delay:** Queuing delay occurs as packets wait in a queue before being transmitted onto the link. It depends on the number of packets ahead in the queue and can range from microseconds to milliseconds.
 - **Transmission Delay:** It is the time required to push all of a packet's bits into the link, determined by the packet's length and the transmission rate of the link. It is typically in microseconds to milliseconds.
-- **Propagation Delay:** It is the time for a bit to propagate from one router to the next, dependent on the distance between routers and the propagation speed of the link. It can be in milliseconds for wide-area networks.
+- **Propagation Delay:** It is the time for a bit to propagate from one router to the next, dependent on the distance between routers and the propagation speed of the link. It can be in milliseconds for wide area networks.
 - **Comparing Transmission and Propagation Delay:** Transmission delay is about pushing out the packet, while propagation delay is about bit propagation. They can be thought of as the time it takes for a caravan of cars to travel between tollbooths on a highway.
 - **Traffic Intensity:** The traffic intensity (La/R) plays a vital role in estimating queuing delay. If it exceeds 1, queuing delay can approach infinity. It varies based on the rate of packet arrivals and the transmission rate.
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHd2b-31EKHc-W0Ah_HtMogmvFSs7LCK5p-2s6gK7o4h2dv7yao9fDUTvge6xrDnoPiVzIlly5XMmSi-l-sLOQST4M6NFGPxk7GSChBXEqVrqqEJD_ZESJ2vL-SSSzsXRw8dMtxXjAUJUIHuei8cA2j7=w1092-h888-s-no" width="600" height="400">
 
-> **Trace Route**: measure end-to-end delay in a computer network by tracing the route taken by packets and measuring round-trip delays to routers.
+> **Trace Route**: measure end to end delay in a computer network by tracing the route taken by packets and measuring round-trip delays to routers.
 
-> If the source receives fewer than three messages from any given router (due to packet loss in the network), Traceroute places an asterisk just after the router number and reports fewer than three round-trip times for that router.
+> If the source receives fewer than three messages from any given router (due to packet loss in the network), Traceroute places an asterisk just after the router number and reports fewer than three round trip times for that router.
 
 ## 1.10 Throughput
 
 > If the file consists of F bits and the transfer takes T seconds for Host B to receive all F bits, then the average throughput of the file transfer is F/T bits/sec.
 
 - **Instantaneous vs. Average Throughput**: It explains the difference between instantaneous throughput (bits/sec at a given moment) and average throughput (bits/sec over the entire transfer).
-- **Two-Link Network**: In a simple network with two links, the throughput is determined by the slower link, which acts as the **bottleneck**. `min{Rc, Rs}`
+- **Two Link Network**: In a simple network with two links, the throughput is determined by the slower link, which acts as the **bottleneck**. `min{Rc, Rs}`
 - **Multiple Links**: In a network with multiple links between source and destination, the throughput is limited by the slowest link along the path.
-- **Access Network**: In today's Internet, the access network is often the bottleneck for throughput due to over-provisioned core network links.
+- **Access Network**: In today's Internet, the access network is often the bottleneck for throughput due to over provisioned core network links.
 - **Intervening Traffic**: Throughput can be affected by other data flows sharing the same link, even if the link has a high transmission rate.
 - **General Dependence**: Throughput depends not only on link transmission rates but also on intervening traffic, making it a more complex concept.
 
@@ -209,10 +209,10 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 ## 1.12 Networks Under Attack
 
 - **Malware Consequences:** Malware can have severe consequences, including file deletion, data theft (e.g., passwords and personal information), and turning compromised hosts into part of botnets used for malicious purposes.
-- **Self-Replicating Malware:** Many malware types are self-replicating, meaning they can infect one host and then spread to other hosts over the Internet, leading to exponential growth in infections.
+- **Self Replicating Malware:** Many malware types are self replicating, meaning they can infect one host and then spread to other hosts over the Internet, leading to exponential growth in infections.
 - **Types of DoS Attacks:** DoS attacks can be categorized into three types: `vulnerability attacks`, `bandwidth flooding`, and `connection flooding`. These attacks disrupt services or crash hosts.
 - **Distributed DoS (DDoS) Attacks**: In a DDoS attack, attackers control multiple sources to launch attacks, making them harder to detect and defend against.
 - **Cryptography Defense**: Cryptography is one of the defenses against packet sniffing. It can help secure communication channels and protect against eavesdropping.
 - **IP Spoofing**: Attackers can forge source addresses on packets, allowing them to masquerade as someone else. This is known as IP spoofing and presents a security challenge.
-- **End-Point Authentication**: To address IP spoofing and ensure message authenticity, end-point authentication mechanisms are needed. These mechanisms verify the source of messages.
+- **End Point Authentication**: To address IP spoofing and ensure message authenticity, end point authentication mechanisms are needed. These mechanisms verify the source of messages.
 
