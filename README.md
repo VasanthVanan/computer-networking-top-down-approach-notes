@@ -52,6 +52,10 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-[Chapter 3: Transport Layer]()
+[Chapter 3: Transport Layer](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#chapter-3-transport-layer)
 ---
 
+* [3.1 Transport-Layer Services](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#31-transport-layer-services)
+* [3.2 Multiplexing and Demultiplexing](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#32-multiplexing-and-demultiplexing)
+* [3.3 Connectionless Multiplexing and Demultiplexing](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#33-connectionless-multiplexing-and-demultiplexing)
+* [3.4 Connection-Oriented Multiplexing and Demultiplexing](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#34-connection-oriented-multiplexing-and-demultiplexing)
