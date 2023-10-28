@@ -121,3 +121,43 @@ clientSocket.bind((’’, 19157))
 > If no errors are introduced into the packet, then clearly the sum at the receiver will be 1111111111111111. If one of the bits is a 0, then we know that errors have been introduced into the packet.
 
 > It is useful for the transport layer to provide error checking as a safety measure. Although UDP provides error checking, it does not do anything to recover from an error. Some implementations of UDP simply discard the damaged segment; others pass the dam- aged segment to the application with a warning.
+
+## 3.6 Building Reliable Data Transfer Portocol
+
+**3.6.1 RDT 1.0:**
+- **Basic Version:** RDT 1.0 is the most basic version of the Reliable Data Transfer protocol.
+- **Key Characteristics:**
+  - Sender sends data to the receiver.
+  - Receiver simply accepts the data without providing feedback. (unidirectional communication)
+  - Assumes a perfectly reliable channel where data is never lost or corrupted.
+  - No error detection or correction mechanisms in place.
+
+**3.6.2 RDT 2.0:**
+- **Enhanced Reliability:** RDT 2.0 is an enhanced version of the RDT 1.0 protocol.
+- **Key Characteristics:**
+  - Introduces a basic acknowledgment mechanism.
+  - Sender sends data and waits for an acknowledgment (ACK / NAK) from the receiver.
+  - Receiver sends an ACK to confirm successful data reception.
+  - If ACK is not received, sender retransmits the data.
+  - Addresses the issue of lost or corrupted data and ensures basic reliability.
+
+  > The message-dictation protocol uses both positive acknowledgments (“OK”) and negative acknowledgments (“Please repeat that.”). These control messages allow the receiver to let the sender know what has been received correctly, and what has been received in error and thus requires repeating. It is known as ARQ (Automatic Repeat reQuest) protocols.
+
+  > when the sender is in the wait-for-ACK-or-NAK state, it cannot get more data from the upper layer; that will happen only after the sender receives an ACK and leaves this state. This is known as `Stop-and-Wait` protocol.
+
+**3.6.3 RDT 2.1:**
+- **Extended Reliability:** RDT 2.1 further improves upon reliability.
+- **Key Characteristics:**
+  - Adds a sequence number to each frame sent by the sender.
+  - Receiver identifies duplicate frames and discards them.
+  - If the receiver receives a frame with the wrong sequence number, it discards it.
+  - This prevents duplicate frames from being delivered and enhances reliability.
+
+**3.6.4 RDT 2.2:**
+- **Enhanced Error Handling:** RDT 2.2 focuses on error handling and retransmission.
+- **Key Characteristics:**
+  - Similar to RDT 2.1, it uses sequence numbers to handle duplicate frames.
+  - Introduces a timeout mechanism.
+  - If the receiver doesn't receive an expected frame within a certain time (timeout), it requests retransmission.
+  - Sender retransmits the missing frame.
+  - Adds the ability to recover from lost frames more efficiently.
