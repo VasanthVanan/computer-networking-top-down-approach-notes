@@ -60,3 +60,8 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 * [3.3 Connectionless Multiplexing and Demultiplexing](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#33-connectionless-multiplexing-and-demultiplexing)
 * [3.4 Connection-Oriented Multiplexing and Demultiplexing](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#34-connection-oriented-multiplexing-and-demultiplexing)
 * [3.5 UDP (User Datagram Protocol)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#35-udp-user-datagram-protocol)
+* [3.6 Building Reliable Data Transfer Protocol](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#36-building-reliable-data-transfer-portocol)
+    * [3.6.1 RDT 1.0]()
+    * [3.6.2 RDT 2.0]()
+    * [3.6.3 RDT 2.1]()
+    * [3.6.4 RDT 2.2]()
