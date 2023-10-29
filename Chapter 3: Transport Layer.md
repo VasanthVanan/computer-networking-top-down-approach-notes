@@ -112,7 +112,7 @@ clientSocket.bind((’’, 19157))
   - `Checksum`: Used for error detection.
 - Checks for alterations during data transmission.
 
-> UDP at the sender side performs the 1s complement of the sum of all the 16-bit words in the segment, with any overflow encountered during the sum being wrapped around.
+> UDP at the sender side performs the 1s complement of the sum of all the 16 bit words in the segment, with any overflow encountered during the sum being wrapped around.
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHd6aGmd6Jk9aEfaOuteJHdj1V8Tl3M-w_eAdWjDwwqOUuDR8hobSh1fjb2PyblDTqlzm8bLz72502F7YGVJF2x5nirudlaEPwHHrIdqbkWzDpvPUb6K3jccQN5bxYKKsbptwUDTjAnvI0uhICFYGpRv=w1286-h1130-s-no" width="550" height="500">
 
@@ -120,11 +120,11 @@ clientSocket.bind((’’, 19157))
 
 > If no errors are introduced into the packet, then clearly the sum at the receiver will be 1111111111111111. If one of the bits is a 0, then we know that errors have been introduced into the packet.
 
-> It is useful for the transport layer to provide error checking as a safety measure. Although UDP provides error checking, it does not do anything to recover from an error. Some implementations of UDP simply discard the damaged segment; others pass the dam- aged segment to the application with a warning.
+> It is useful for the transport layer to provide error checking as a safety measure. Although UDP provides error checking, it does not do anything to recover from an error. Some implementations of UDP simply discard the damaged segment; others pass the damaged segment to the application with a warning.
 
 ## 3.6 Building Reliable Data Transfer Portocol
 
-**3.6.1 RDT 1.0:**
+### 3.6.1 RDT 1.0:
 - **Basic Version:** RDT 1.0 is the most basic version of the Reliable Data Transfer protocol.
 - **Key Characteristics:**
   - Sender sends data to the receiver.
@@ -132,32 +132,116 @@ clientSocket.bind((’’, 19157))
   - Assumes a perfectly reliable channel where data is never lost or corrupted.
   - No error detection or correction mechanisms in place.
 
-**3.6.2 RDT 2.0:**
+### 3.6.2 RDT 2.0:
 - **Enhanced Reliability:** RDT 2.0 is an enhanced version of the RDT 1.0 protocol.
 - **Key Characteristics:**
   - Introduces a basic acknowledgment mechanism.
-  - Sender sends data and waits for an acknowledgment (ACK / NAK) from the receiver.
+  - Sender sends data and waits for an `acknowledgment` (`ACK` / `NAK`) from the receiver.
   - Receiver sends an ACK to confirm successful data reception.
   - If ACK is not received, sender retransmits the data.
   - Addresses the issue of lost or corrupted data and ensures basic reliability.
 
-  > The message-dictation protocol uses both positive acknowledgments (“OK”) and negative acknowledgments (“Please repeat that.”). These control messages allow the receiver to let the sender know what has been received correctly, and what has been received in error and thus requires repeating. It is known as ARQ (Automatic Repeat reQuest) protocols.
+  > The message dictation protocol uses both positive acknowledgments (“OK”) and negative acknowledgments (“Please repeat that.”). These control messages allow the receiver to let the sender know what has been received correctly, and what has been received in error and thus requires repeating. It is known as `ARQ (Automatic Repeat reQuest)` protocols.
 
-  > when the sender is in the wait-for-ACK-or-NAK state, it cannot get more data from the upper layer; that will happen only after the sender receives an ACK and leaves this state. This is known as `Stop-and-Wait` protocol.
+  > when the sender is in the wait for ACK or NAK state, it cannot get more data from the upper layer; that will happen only after the sender receives an ACK and leaves this state. This is known as `Stop and Wait` protocol.
 
-**3.6.3 RDT 2.1:**
+### 3.6.3 RDT 2.1:
 - **Extended Reliability:** RDT 2.1 further improves upon reliability.
 - **Key Characteristics:**
-  - Adds a sequence number to each frame sent by the sender.
+  - Adds a `sequence number` to each frame sent by the sender.
   - Receiver identifies duplicate frames and discards them.
   - If the receiver receives a frame with the wrong sequence number, it discards it.
   - This prevents duplicate frames from being delivered and enhances reliability.
 
-**3.6.4 RDT 2.2:**
-- **Enhanced Error Handling:** RDT 2.2 focuses on error handling and retransmission.
+### 3.6.4 RDT 3.0:
+- **Enhanced Error Handling:** RDT 3.0 focuses on error handling and retransmission.
 - **Key Characteristics:**
   - Similar to RDT 2.1, it uses sequence numbers to handle duplicate frames.
-  - Introduces a timeout mechanism.
+  - Introduces a `timeout mechanism`.
   - If the receiver doesn't receive an expected frame within a certain time (timeout), it requests retransmission.
   - Sender retransmits the missing frame.
   - Adds the ability to recover from lost frames more efficiently.
+  - RDT 3.0 is a functionally correct protocol but has performance limitations due to its stop and wait behavior.
+
+- **Performance Example:**
+  - Consider two hosts on the opposite coasts of the United States with a round trip propagation delay (RTT) of 30 milliseconds.
+  - The transmission rate (R) is 1 Gbps, and the packet size (L) is 1,000 bytes.
+  - The time needed to transmit a packet into the link is 8 microseconds (dtrans).
+  - In a stop and wait scenario, the sender utilizes the channel very inefficiently.
+  - Only 0.00027 of the sender's time is spent sending data into the channel, resulting in a low effective throughput, even on a high capacity link.
+
+- **Introducing Pipelining:**
+  - The stop and wait protocol's performance is poor due to its sender utilization. It can severely limit the capabilities of high-capacity network links.
+  - The sender can improve utilization by transmitting multiple packets before waiting for acknowledgments (`pipelining`).
+  - This allows for a more efficient use of the channel and effectively increases sender utilization.
+  - Introducing pipelining requires several changes:
+    - Expanding the `range of sequence numbers` to account for multiple in transit packets.
+    - Both sender and receiver may need to `buffer multiple packets`.
+  - Two basic approaches for pipelined error recovery are `Go Back N` and `selective repeat`.
+
+### 3.6.5 Go-Back-N (GBN)
+
+Animation: [Go-Back-N ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/animations/gbn_sr/)
+
+> In a Go-Back-N (GBN) protocol, the sender is allowed to transmit multiple packets (when available) without waiting for an acknowledgment, but is constrained to have no more than some maximum allowable number, N, of unacknowledged packets in the pipeline. 
+
+
+- **Sender Behavior in GBN:**
+  - The window slides forward over the sequence number space, making N the window size.
+  - N is referred to as the window size, and GBN is considered a sliding-window protocol.
+  - `Flow control` and `congestion control` are some of the reasons for limiting the number of unacknowledged packets to N.
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHf6riQ0xiX1Y8x0IaZhnnaUd6EYEaffccwXfQry67IIKawSascIKFG6Md8mSFxQh_g33BxvYHcKuYAEE2U9AlpXm-r64b5UlepEhonQYufEGA4w63KF1rhgAlaSNo4jzfsUfamxAi-tT4kk0VtgR3Cj=w1920-h440-s-no" width="750" height="200">
+
+- **Sliding Window Behaviour**
+  - Sequence numbers between `0` and `'base-1'` are for sent and acknowledged packets.
+  - `'base'` to `'nextseqnum-1'` represents sent but unacknowledged packets.
+  - Sequence numbers from `'nextseqnum'` to `'base+N-1'` are available for sending when data arrives.
+  - Sequence numbers beyond `'base+N'` can't be used until unacknowledged packets are acknowledged.
+  - GBN receiver acknowledges correctly received packets and discards out of order packets.
+
+- **Sender's Actions:**
+  - The sender must respond to three types of events: invocation from above, receipt of an ACK, and a timeout event.
+  - The sender checks if the window is full before sending a packet. If the window is full, data is returned to the upper layer.
+  - If there are lost or delayed packets, a timer is used to recover them. The timer for the oldest transmitted but unacknowledged packet is managed.
+
+- **Receiver's Actions:**
+  - The receiver handles correctly received and in-order packets by sending an ACK and delivering the data to the upper layer.
+  - Out-of-order packets are discarded, as the receiver must deliver data in order.
+  - Throwing away out-of-order packets simplifies receiver buffering.
+
+### 3.6.6 Selective Repeat (SR)
+
+Animation: [Selective Repeat ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/animations/gbn_sr/)
+
+- **Performance Issues with GBN:**
+  - GBN allows the sender to fill the pipeline with packets but can suffer from performance problems, especially when the window size and bandwidth-delay product are large.
+  - A single packet error can trigger unnecessary retransmissions, potentially filling the pipeline with these redundant packets.
+  - Selective-repeat protocols aim to avoid unnecessary retransmissions by having the sender retransmit only suspected lost or corrupted packets.
+  - In SR, the sender can receive ACKs for some packets in the window, unlike GBN.
+
+- **SR Sender Events and Actions:**
+  1. **Data Received:** Send data if it's within the window, otherwise buffer or return it.
+  2. **Timeout:** Use individual timers for packet retransmission.
+  3. **ACK Received:** Update the window and transmit new in-window packets.
+
+- **SR Receiver Events and Actions:**
+  1. **Packet Received:** Send selective ACKs and deliver consecutive in-window packets to the upper layer.
+  2. **Special Packet:** Generate ACK for correctly received packets outside the window.
+  3. **Other Cases:** Ignore packets not fitting the above scenarios.
+
+- **Synchronization and Implications:**
+  - SR protocols lack synchronization between sender and receiver windows.
+  - The finite range of sequence numbers can lead to consequences in scenarios involving packet reordering.
+
+### 3.6.7 Improvements in RDT Protocols 
+
+| Mechanism          | Purpose                                            | Comments |
+|--------------------|----------------------------------------------------|-----------|
+| Checksum           | Detect bit errors in transmitted packets.         | -       |
+| Timer              | Timeout for packet retransmission due to lost packets. | Duplicate packets may occur due to premature timeouts or lost ACKs. |
+| Sequence number    | Sequential numbering for packet order and lost packet detection. | Gaps indicate lost packets; duplicates detect duplicate packets. |
+| Acknowledgment     | Confirms correct receipt of packets.              | Can be individual or cumulative, depending on the protocol. |
+| Negative acknowledgment (NAK) | Notifies sender about incorrectly received packets. | Typically carries the sequence number of the problematic packet. |
+| Window and Pipelining | Increases sender utilization by allowing multiple unacknowledged packets in the pipeline. | Window size is determined by the receiver's capacity and network congestion. |
+
