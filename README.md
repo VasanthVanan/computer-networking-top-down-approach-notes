@@ -65,3 +65,8 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
     * [3.6.2 RDT 2.0]()
     * [3.6.3 RDT 2.1]()
     * [3.6.4 RDT 2.2]()
+    * [3.6.5 Go-Back-N (GBN)]()
+    * [3.6.6 Selective Repeat (SR)]()
+    * [3.6.7 Improvements in RDT Protocols]()
+* [3.7 TCP (Transmission Control Protocol)]()
+    * [3.7.1 Round-Trip Time Estimation and Timeout in TCP]()

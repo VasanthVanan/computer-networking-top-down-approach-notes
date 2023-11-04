@@ -245,3 +245,74 @@ Animation: [Selective Repeat ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/anim
 | Negative acknowledgment (NAK) | Notifies sender about incorrectly received packets. | Typically carries the sequence number of the problematic packet. |
 | Window and Pipelining | Increases sender utilization by allowing multiple unacknowledged packets in the pipeline. | Window size is determined by the receiver's capacity and network congestion. |
 
+
+## 3.7 TCP (Transmission Control Protocol)
+
+- **Full-Duplex and Point-to-Point:**
+  - TCP connections provide a full-duplex service, allowing data to flow in both directions simultaneously.
+  - Each TCP connection is between a single sender and a single receiver, and multicasting is not supported.
+
+- **Data Transfer in TCP:**
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHftJQQO-Aubels0acw3xS3UmGDa2n1Fnh3DkQRsy122XtlIjFenjTHSv7amS_EDWg84DBERoOp7h6XmPOM9vuNdynFKwDSoA-Tv0pS-TnhEmjybGHv3AM-q4Z0H5GYIX47JiNbCeSzjYUORJBXy3sU=w1920-h808-s-no" width="550" height="300">
+
+  - Application-layer data flows from the client process to the server process.
+  - Data is passed through the connection's `send buffer` during data transmission.
+  - TCP controls when data is sent based on its convenience, and the `Maximum Segment Size (MSS)` limits data size.
+
+    > MSS is the maximum amount of application-layer data in the segment, not the maximum size of the TCP segment including headers.
+
+    > To fit within a single link-layer frame, set the MSS, considering a typical 40-byte TCP/IP header, to 1460 bytes, as Ethernet and PPP have an MTU of 1500 bytes.
+  
+  - Each data chunk is encapsulated in a TCP header to form TCP segments and further encapsulated in IP datagrams for network transmission.
+  - The receiver places the received data into the connection's `receive buffer`, and the application reads the data from there.
+
+- **TCP Segment Structure:**
+  - A TCP segment consists of `header` fields and a `data` field.
+  - Key fields include `source port` and `destination port`, `checksum`, `sequence number`, `acknowledgment number`, `receive window`, `header length`, and `flags` (SYN, ACK, FIN, RST, PSH, URG, CWR, ECE).
+  - An options field can be included for features like maximum segment size (MSS) negotiation and window scaling.
+  
+  <img src="https://lh3.googleusercontent.com/pw/ADCreHcSNDV-yVd1BdDU6Nj4ezCL_1_VjcuUWaPSqFQBBYShSAwrC9jlbpw_LlvY8oITjDuOttW31BPxO9ayFockAc8Z9RjoVpQB9ai8_Sem2JD7fyJrLw32MmKF15kWA5VdEYtQSpshhgcUYFYip4ICJUY=w1406-h1130-s-no" width="530" height="400">
+
+
+- **Sequence Numbers and Acknowledgment Numbers:**
+  - Sequence numbers are assigned to bytes in the data stream and are included in the segment header.
+  - Acknowledgment numbers represent the `next expected byte` in the opposite direction of data flow.
+  - TCP uses `cumulative acknowledgments`, acknowledging the last byte received.
+  - Handling out-of-order segments is left to TCP implementation and may involve discarding or waiting for missing bytes.
+
+
+### 3.7.1 Round-Trip Time Estimation and Timeout in TCP
+
+- **Round-Trip Time Estimation:**
+  - TCP uses round-trip time (RTT) estimation to determine the time between sending a segment and receiving an acknowledgment.
+  - The sample RTT (`SampleRTT`) is measured for a single segment at a time, typically for one of the `unacknowledged segments`.
+  - The SampleRTT is computed as the time between sending the segment and receiving an acknowledgment.
+  - Multiple SampleRTT values may fluctuate due to network and load variations.
+  - TCP calculates an average RTT, `EstimatedRTT`, using an *exponentially weighted moving average (EWMA)* formula:
+
+    ```
+    EstimatedRTT = (1 - alpha ) * EstimatedRTT + alpha * SampleRTT** (alpha = 0.125)
+    ```
+  - EstimatedRTT gives more weight to recent samples, reflecting current network conditions.
+
+- **RTT Variation Measurement:**
+  - TCP also measures RTT variation (`DevRTT`) to estimate how much SampleRTT deviates from EstimatedRTT.
+  - DevRTT is calculated as an EWMA of the difference between `SampleRTT` and `EstimatedRTT`.
+  
+    ```
+    DevRTT = (1 – beta) * DevRTT + beta * | SampleRTT – EstimatedRTT |
+    ```
+
+- **Setting the Retransmission Timeout Interval:**
+  - The retransmission timeout (TimeoutInterval) should be greater than or equal to EstimatedRTT to avoid unnecessary retransmissions.
+  - It shouldn't be much larger than EstimatedRTT to avoid delays when retransmitting lost segments.
+  - DevRTT plays a role in determining the timeout interval:
+    ```
+    TimeoutInterval = EstimatedRTT + 4 * DevRTT
+    ```
+  - An initial TimeoutInterval of 1 second is recommended. After a timeout, the TimeoutInterval is doubled to prevent premature timeouts for subsequent segments, but it's recomputed based on the formula afterward.
+  
+
+
+
