@@ -269,7 +269,7 @@ Animation: [Selective Repeat ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/anim
 
 - **TCP Segment Structure:**
   - A TCP segment consists of `header` fields and a `data` field.
-  - Key fields include `source port` and `destination port`, `checksum`, `sequence number`, `acknowledgment number`, `receive window`, `header length`, and `flags` (SYN, ACK, FIN, RST, PSH, URG, CWR, ECE).
+  - Key fields include `source port` and `destination port`, `checksum`, `sequence number`, `acknowledgment number`, `receive window`, `header length`, and `flags`.
   - An options field can be included for features like maximum segment size (MSS) negotiation and window scaling.
   
   <img src="https://lh3.googleusercontent.com/pw/ADCreHcSNDV-yVd1BdDU6Nj4ezCL_1_VjcuUWaPSqFQBBYShSAwrC9jlbpw_LlvY8oITjDuOttW31BPxO9ayFockAc8Z9RjoVpQB9ai8_Sem2JD7fyJrLw32MmKF15kWA5VdEYtQSpshhgcUYFYip4ICJUY=w1406-h1130-s-no" width="530" height="400">
@@ -292,7 +292,7 @@ Animation: [Selective Repeat ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/anim
   - TCP calculates an average RTT, `EstimatedRTT`, using an *exponentially weighted moving average (EWMA)* formula:
 
     ```
-    EstimatedRTT = (1 - alpha ) * EstimatedRTT + alpha * SampleRTT** (alpha = 0.125)
+    EstimatedRTT = (1 - alpha) * EstimatedRTT + alpha * SampleRTT (alpha = 0.125)
     ```
   - EstimatedRTT gives more weight to recent samples, reflecting current network conditions.
 
@@ -314,5 +314,76 @@ Animation: [Selective Repeat ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/anim
   - An initial TimeoutInterval of 1 second is recommended. After a timeout, the TimeoutInterval is doubled to prevent premature timeouts for subsequent segments, but it's recomputed based on the formula afterward.
   
 
+### 3.7.2 Reliable Data Transfer
+
+- **TCP Timer Management:**
+  - An individual timer for each unacknowledged segment is conceptually simple but can have considerable overhead.
+  - Recommended TCP timer management uses only a single retransmission timer, even for multiple unacknowledged segments.
+  - TCP reliable data transfer is described in two steps: `timeout-based recovery` and recovery using `duplicate acknowledgments`.
+
+- **Timeout and Retransmission Handling:**
+
+  1. **Data Received from Application Above:**
+      - A TCP segment is created with a sequence number.
+      - If the timer is not running, start the timer. The timer is associated with the oldest unacknowledged segment.
+      - Pass the segment to IP.
+      - Timer expiration interval is `TimeoutInterval`, calculated from `EstimatedRTT` and `DevRTT`.
+
+  2. **Timeout Event:**
+      - Retransmit the unacknowledged segment with the smallest sequence number.
+      - Restart the timer.
+
+  3. **ACK Received:**
+      - On ACK with field value y, compare y with SendBase.
+      - Update SendBase if y > SendBase.
+      - If any unacknowledged segments remain, start the timer.
+
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHfd0XeL8ZXe8ewMBM-9XEzLjEQHHXXBQSAGJXOiPCYUlRUDfrbo1FCzGP5NLdxRoCmTgjI1auHjGNDFbkm3fxXuNQ7cv7k65Ha4DrT7hCo_r_rpKPo1vxmCad40jF1o7lAbrDf-0DV7-9xmkbekxu8=w1920-h616-s-no?authuser=2" width="800" height="300">
+
+- **Scenarios:**
+  - `Duplicate ACKs` can trigger a `fast retransmit` (retransmission before timeout).
+  - TCP employs exponential back-off for timer intervals.
+  - The sender can often detect packet loss before a timeout by observing duplicate ACKs.
+
+  > A duplicate ACK is an ACK that reac- knowledges a segment for which the sender has already received an earlier acknowl- edgment.
+
+  > If the TCP sender receives three duplicate ACKs for the same data, it takes this as an indication that the segment following the segment that has been ACKed three times has been lost. Then, the TCP sender performs a `fast retransmit` retransmitting the missing segment before that segment’s timer expires. 
+
+  - TCP's error recovery mechanism is categorized as a hybrid of `Go-Back-N (GBN)` and `Selective Repeat (SR)` protocols.
 
 
+### 3.7.3 Flow Control
+
+Animation: [Flow Control](https://www2.tkn.tu-berlin.de/teaching/rn/animations/flow/)
+
+TCP Flow Control ensures that the sender doesn't overwhelm the receiver's buffer. When data arrives at the receiver, it's placed in a receive buffer, which the application reads from. If the application reads slowly, the sender can easily overflow the buffer.
+
+- **Flow Control vs. Congestion Control:**
+  - Flow control matches sender rate to receiver reading speed.
+  - Congestion control manages sender rate due to network congestion.
+  - Although they both throttle the sender, they serve different purposes.
+
+- **TCP Flow Control:**
+
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHdwuKcHW7WDAFNgV855UgY1P66rxQ52f8nFf1Czx7h1J2gZoP60wVYzQRbXRwM6ooQbGPuL0WQxy2XKUZHWMPCoeRNV4p-vCd_dQv9AEn_dxAZ3SxIifgzty24DQQVfFs0ZOvasX8PyUvRoGx3TCfM=w1748-h860-s-no?authuser=2" width="400" height="250">
+
+  - The sender maintains a `receive window variable (rwnd)` to determine available buffer space at the receiver.
+  - Full-duplex communication means both sender and receiver have `distinct receive windows`.
+  - rwnd is `dynamic`, and Host B informs Host A by including rwnd in its segments.
+  
+  ```
+  rwnd = RcvBuffer - [LastByteRcvd - LastByteRead]
+  ```
+
+- **Using rwnd for Flow Control:**
+  - Host B's rwnd value reflects its available buffer space.
+  - Host A ensures LastByteSent - LastByteAcked ≤ rwnd.
+  - If rwnd is zero, TCP mandates that Host A sends segments with one data byte to unblock the connection.
+  - This ensures Host A is informed when space becomes available in Host B's receive buffer.
+
+## 3.7.4 TCP Connection Management
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHerZiPLvIkD639YmnLg4pvsWFpC001vHpsgwfcRnyxsT3JyaW9A4xcLw2SoQIAR4qV6y-8JQ4eMA3WRWUse594rU-mnBwuK6xjDGe5kkqb6JVi7vKdf6pkWXMIDKO0Cr6iuuLM0Pak4vNxgMsWs7_M=w1920-h888-s-no?authuser=2" width="950" height="550">
+
+
+## 3.8 Congestion Control
