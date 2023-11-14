@@ -27,7 +27,7 @@
 
 > the Internet community has developed an enhancement for TCP, called Transport Layer Security (TLS) [RFC 5246]. TCP enhanced with TLS not only does everything that traditional TCP does but also provides critical process to process security services, including encryption, data integrity, and end point authentication.
 
-> In particular, if an application wants to use the services of TLS, it needs to include TLS code (existing, highly optimized librar- ies and classes) in both the client and server sides of the application. TLS has its own socket API that is similar to the traditional TCP socket API. 
+> In particular, if an application wants to use the services of TLS, it needs to include TLS code (existing, highly optimized libraries and classes) in both the client and server sides of the application. TLS has its own socket API that is similar to the traditional TCP socket API. 
 
 ## 2.3 Application Layer Protocol: Web and HTTP
 
@@ -119,6 +119,9 @@ Content-Type: text/html \r\n
 > The primary goals for HTTP/2 are to reduce perceived latency by enabling request and response multiplexing over a single TCP connection, provide request prioritization and server push, and provide efficient compression of HTTP header fields.
 
 - **HTTP/2 Motivation:** HTTP/1.1's persistent TCP connections caused HOL blocking. Browsers used multiple parallel TCP connections to work around this issue.
+
+> Head of Line (HOL) blocking: occurs when a web page has a large video clip and numerous small objects. With a slow bottleneck link, the video clip causes delays for small objects queued behind it. 
+
 - **HTTP/2 Solution (Framing):** Reduces the need for parallel TCP connections by breaking messages into frames and interleaving them, significantly reducing user perceived delay. Includes binary frame encoding for efficiency.
 
 > The ability to break down an HTTP message into independent frames, inter leave them, and then reassemble them on the other end is the single most important enhancement of HTTP/2.
@@ -193,7 +196,14 @@ Subject: Searching for the meaning of life.
 
 - DNS services include:
     - **hostname aliasing**: host with a complicated canonical hostname can have one or more alias names.
-    - **Mail Server Aliasing**: DNS resolves alias hostnames to canonical forms and retrieves corresponding IP addresses.
+        ```http
+        relay1.west-coast.enterprise.com (canonical/official website name)
+        enterprise.com (alias name)
+        ```
+    - **Mail Server Aliasing**: DNS resolves alias hostnames to canonical forms for mail servers and retrieves corresponding IP addresses.
+        ```http
+        bob@yahoo.com --> bob@relay1.west-coast.yahoo.com
+        ```
     - **Load Distribution**: DNS balances traffic among replicated servers by rotating IP addresses within replies, ensuring even distribution. This technique is also applied to email servers with shared alias names.
 
 ### 2.5.1 How DNS Works: High Level Overview
