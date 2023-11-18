@@ -103,7 +103,7 @@ clientSocket.bind((’’, 19157))
   - Allows `finer control over data sent and timing`.
   - `No connection establishment`, minimizing delays.
   - `No connection state,` supporting more active clients.
-  - `Small packet header` overhead (UDP's 8 bytes vs. TCP's 20 bytes).
+  - `Small packet header` overhead (UDP's 8 bytes vs. TCP's 20 bytes).  
 - Reliability can be added to applications using UDP like QUIC protocol, but it's nontrivial. It can be built directly into the application.
 - Allows reliable communication without TCP's congestion control limitations.
 - Key fields in the UDP header:
@@ -112,13 +112,15 @@ clientSocket.bind((’’, 19157))
   - `Checksum`: Used for error detection.
 - Checks for alterations during data transmission.
 
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHccqsKMoJTpHKrpeBpWY5ePn7ro94y-9gTfw5NPXZ4IInxs2ZdGrHqi441xgHndC9vwiDPl3x3As6aVZTs6GQWNAMmBZTMwvHlIoT1R3MRvymYK7XqkB1O-OEWd8JhmP4Cm_f_nrzKGJwPARpdRqcQ=w1316-h1088-s-no" width="450" height="350">
+
 > UDP at the sender side performs the 1s complement of the sum of all the 16 bit words in the segment, with any overflow encountered during the sum being wrapped around.
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHd6aGmd6Jk9aEfaOuteJHdj1V8Tl3M-w_eAdWjDwwqOUuDR8hobSh1fjb2PyblDTqlzm8bLz72502F7YGVJF2x5nirudlaEPwHHrIdqbkWzDpvPUb6K3jccQN5bxYKKsbptwUDTjAnvI0uhICFYGpRv=w1286-h1130-s-no" width="550" height="500">
 
 - Thus, the 1s complement of the sum `0100101011000010` is `1011010100111101`,
 
-> If no errors are introduced into the packet, then clearly the sum at the receiver will be 1111111111111111. If one of the bits is a 0, then we know that errors have been introduced into the packet.
+> At Receiver, all the four 16 bits (3 + checksum) are added, If no errors are introduced into the packet, then clearly the sum at the receiver will be 1111111111111111. If one of the bits is a 0, then we know that errors have been introduced into the packet.
 
 > It is useful for the transport layer to provide error checking as a safety measure. Although UDP provides error checking, it does not do anything to recover from an error. Some implementations of UDP simply discard the damaged segment; others pass the damaged segment to the application with a warning.
 
@@ -202,6 +204,9 @@ Animation: [Go-Back-N ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/animations/
 
 - **Sender's Actions:**
   - The sender must respond to three types of events: invocation from above, receipt of an ACK, and a timeout event.
+
+  > an acknowledgment for a packet with sequence number N will be taken to be a `cumulative acknowledgment`, indicating that all packets with a sequence number up to and including N have been correctly received at the receiver. 
+
   - The sender checks if the window is full before sending a packet. If the window is full, data is returned to the upper layer.
   - If there are lost or delayed packets, a timer is used to recover them. The timer for the oldest transmitted but unacknowledged packet is managed.
 
@@ -289,7 +294,7 @@ Animation: [Selective Repeat ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/anim
   - The sample RTT (`SampleRTT`) is measured for a single segment at a time, typically for one of the `unacknowledged segments`.
   - The SampleRTT is computed as the time between sending the segment and receiving an acknowledgment.
   - Multiple SampleRTT values may fluctuate due to network and load variations.
-  - TCP calculates an average RTT, `EstimatedRTT`, using an *exponentially weighted moving average (EWMA)* formula:
+  - TCP calculates an average RTT, `EstimatedRTT` of `SampleRTT`, using an *exponentially weighted moving average (EWMA)* formula:
 
     ```
     EstimatedRTT = (1 - alpha) * EstimatedRTT + alpha * SampleRTT (alpha = 0.125)
@@ -319,7 +324,7 @@ Animation: [Selective Repeat ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/anim
 - **TCP Timer Management:**
   - An individual timer for each unacknowledged segment is conceptually simple but can have considerable overhead.
   - Recommended TCP timer management uses only a single retransmission timer, even for multiple unacknowledged segments.
-  - TCP reliable data transfer is described in two steps: `timeout-based recovery` and recovery using `duplicate acknowledgments`.
+  - TCP reliable data transfer is described in two steps: `timeout based recovery` and recovery using `duplicate acknowledgments`.
 
 - **Timeout and Retransmission Handling:**
 
@@ -338,14 +343,14 @@ Animation: [Selective Repeat ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/anim
       - Update SendBase if y > SendBase.
       - If any unacknowledged segments remain, start the timer.
 
-    <img src="https://lh3.googleusercontent.com/pw/ADCreHfd0XeL8ZXe8ewMBM-9XEzLjEQHHXXBQSAGJXOiPCYUlRUDfrbo1FCzGP5NLdxRoCmTgjI1auHjGNDFbkm3fxXuNQ7cv7k65Ha4DrT7hCo_r_rpKPo1vxmCad40jF1o7lAbrDf-0DV7-9xmkbekxu8=w1920-h616-s-no?authuser=2" width="800" height="300">
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHfd0XeL8ZXe8ewMBM-9XEzLjEQHHXXBQSAGJXOiPCYUlRUDfrbo1FCzGP5NLdxRoCmTgjI1auHjGNDFbkm3fxXuNQ7cv7k65Ha4DrT7hCo_r_rpKPo1vxmCad40jF1o7lAbrDf-0DV7-9xmkbekxu8=w1920-h616-s-no?authuser=2" width="880" height="430">
 
 - **Scenarios:**
   - `Duplicate ACKs` can trigger a `fast retransmit` (retransmission before timeout).
-  - TCP employs exponential back-off for timer intervals.
+  - TCP employs exponential back off for timer intervals.
   - The sender can often detect packet loss before a timeout by observing duplicate ACKs.
 
-  > A duplicate ACK is an ACK that reac- knowledges a segment for which the sender has already received an earlier acknowl- edgment.
+  > A duplicate ACK is an ACK that reacknowledges a segment for which the sender has already received an earlier acknowledgment.
 
   > If the TCP sender receives three duplicate ACKs for the same data, it takes this as an indication that the segment following the segment that has been ACKed three times has been lost. Then, the TCP sender performs a `fast retransmit` retransmitting the missing segment before that segment’s timer expires. 
 
@@ -368,7 +373,7 @@ TCP Flow Control ensures that the sender doesn't overwhelm the receiver's buffer
     <img src="https://lh3.googleusercontent.com/pw/ADCreHdwuKcHW7WDAFNgV855UgY1P66rxQ52f8nFf1Czx7h1J2gZoP60wVYzQRbXRwM6ooQbGPuL0WQxy2XKUZHWMPCoeRNV4p-vCd_dQv9AEn_dxAZ3SxIifgzty24DQQVfFs0ZOvasX8PyUvRoGx3TCfM=w1748-h860-s-no?authuser=2" width="400" height="250">
 
   - The sender maintains a `receive window variable (rwnd)` to determine available buffer space at the receiver.
-  - Full-duplex communication means both sender and receiver have `distinct receive windows`.
+  - Full duplex communication means both sender and receiver have `distinct receive windows`.
   - rwnd is `dynamic`, and Host B informs Host A by including rwnd in its segments.
   
   ```
@@ -381,9 +386,139 @@ TCP Flow Control ensures that the sender doesn't overwhelm the receiver's buffer
   - If rwnd is zero, TCP mandates that Host A sends segments with one data byte to unblock the connection.
   - This ensures Host A is informed when space becomes available in Host B's receive buffer.
 
-## 3.7.4 TCP Connection Management
+### 3.7.4 TCP Connection Management
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHerZiPLvIkD639YmnLg4pvsWFpC001vHpsgwfcRnyxsT3JyaW9A4xcLw2SoQIAR4qV6y-8JQ4eMA3WRWUse594rU-mnBwuK6xjDGe5kkqb6JVi7vKdf6pkWXMIDKO0Cr6iuuLM0Pak4vNxgMsWs7_M=w1920-h888-s-no?authuser=2" width="950" height="550">
 
 
 ## 3.8 Congestion Control
+
+  - **End to End Congestion Control**
+
+    In an end to end approach to congestion control, the network layer offers no explicit support to the transport layer for congestion control. 
+
+    > TCP segment loss (as indicated by a timeout or the receipt of three duplicate acknowledgments) is taken as an indication of network congestion, and TCP decreases its window size accordingly. Increasing round trip segment delay as an indicator of increased network congestion
+
+  - **Network Assisted Congestion Control**
+
+    In network assisted congestion control, routers provide explicit feedback to the sender and/or receiver regarding the network's congestion state. Feedback may range from a simple bit indicating congestion at a link to more sophisticated feedback, such as informing the sender of the maximum host sending rate a router can support.
+
+    `Direct Feedback:` A network router directly sends feedback to the sender, often in the form of a choke packet indicating congestion.
+      
+    `Indirect Feedback:` A router marks/updates a field in a packet flowing from sender to receiver to indicate congestion. Upon receiving a marked packet, the receiver notifies the sender of the congestion indication. This method takes a full round trip time.
+
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHdnnrFdP89vVF72PcX0cr3fwCFXpUNq7I1UnVh0Dd60mQLfNAvfLNUNulyNT1f9eoQKGNAUKV0n2d__ihzX_3kBfBIkX7vSg1FA4rlG0qOca-eM8F75lTHPnGqxhEK5aeSXNvEBhXqHZBhNMMfBDtg=w1920-h1038-s-no?authuser=2" width="550" height="300">
+
+
+### 3.8.1 Classic TCP Congestion Control
+
+TCP adopts an approach where each sender limits the rate of sending traffic into its connection based on perceived network congestion. This raises questions about how the sender limits its rate, how it perceives congestion, and the algorithm used to adjust its rate.
+
+- **Rate Limiting Mechanism**
+
+TCP sender limits the rate using a `congestion window (cwnd)` variable, constraining the amount of unacknowledged data. The constraint is given by:
+
+```
+LastByteSent - LastByteAcked <= min (cwnd, rwnd)
+```
+
+Assuming a large receive buffer, the constraint solely depends on cwnd, limiting the sender's rate. The sender adjusts cwnd to control its sending rate based on network conditions.
+
+> Thus the sender’s send rate is roughly `cwnd/RTT bytes/sec`. By adjusting the value of cwnd, the sender can therefore adjust the rate at which it sends data into its connection.
+
+- **Perceiving Congestion**
+
+  TCP perceives congestion through loss events, defined as either a timeout or three duplicate ACKs. Excessive congestion causes router buffers to overflow, resulting in dropped datagrams, triggering a loss event at the sender. In a congestion free network, acknowledgments for unacknowledged segments arrive, signaling successful delivery and leading to an increase in cwnd.
+
+- **Determining Sending Rate**
+
+  TCP addresses the challenge of determining the sending rate to avoid network congestion while utilizing available bandwidth. It follows guiding principles:
+  - **Loss Event:** A lost segment implies congestion, decreasing the sender's rate.
+  - **Acknowledged Segment:** Acknowledgments indicate successful delivery, allowing an increase in the sender's rate.
+  - **Bandwidth Probing:** TCP probes for congestion onset by increasing the rate until a loss event occurs, adjusting the transmission rate based on implicit signals.
+
+  > The TCP sender thus increases its transmission rate to probe for the rate that at which congestion onset begins, backs off from that rate, and then to begins probing again to see if the congestion onset rate has changed.
+
+- **TCP Congestion Control Algorithm**
+
+  The TCP congestion control algorithm, standardized in [RFC 5681], consists of three major components:
+
+    1. **Slow Start:** Initially, cwnd is small, and the sending rate doubles each round until a threshold is reached or a loss event occurs. Slow start ends on loss, setting cwnd to 1 MSS, and transitions to congestion avoidance.
+      
+    2. **Congestion Avoidance:** Linear increase of cwnd by 1 MSS per round, avoiding aggressive growth. Ends on loss, similar to slow start.
+
+    > TCP’s congestion avoidance algorithm behaves the same when a timeout occurs as in the case of slow start: The value of cwnd is set to 1 MSS, and the value of ssthresh is updated to half the value of cwnd when the loss event occurred.
+
+    3. **Fast Recovery:** Recommended but not required. It involves increasing cwnd for duplicate ACKs and transitioning to congestion avoidance on ACK for the missing segment.
+
+    > TCP Tahoe, unconditionally cut its congestion window to 1 MSS and entered the slow start phase after either a timeout indicated or triple duplicate ACK indicated loss event. The newer version of TCP, TCP Reno, incorporated fast recovery.
+
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHfOLql8zoOonXOmIYdDXSO1lR3sBlmC5onGe2wHtLP4czHe02kSgwFNjVnJyYM9wpI3Ycw7WGUuaFGEdXiSnE9EULNAue-yJlaEfMLU8R8EjPf379tcqPvSpv86k-Qu3Xu2CVQdgo94ETgsx9IjNTI=w1768-h1094-s-no?authuser=2" width="600" height="400">
+
+    TCP's congestion control exhibits `saw tooth` behavior, referred to as `additive increase, multiplicative decrease` **(AIMD)**. AIMD aims to simultaneously optimize user and network performance, probing for available bandwidth in an asynchronous manner.
+
+
+## 3.9 Network Assisted Congestions
+
+### 3.9.1 Explicit Congestion Notification
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHdgekG0rBZ1X-scpp5eaH2nUlJLL8xjB0dn958V8M8MBapJ46_dUNdkB-nqR__S6m142ELWrX-QJ7ytpicpWKDSYooKp5y3_lqADmCP-wFgjxEfuYuL4K_bLKdYfDtJ-51tZ0k_RNTaf8uO553bckQ=w910-h496-s-no?authuser=2" width="550" height="300">
+
+- ECN is a form of network assisted congestion control in the Internet that involves both TCP and IP.
+- Two bits in the IP datagram header's `Type of Service` field are reserved for `ECN`.
+- One ECN setting indicates router `congestion`; the other indicates ECN `capability of sender and receiver`.
+- Router congestion indication is forwarded to the destination host, informing the sending host.
+- TCP sender reacts to ECN congestion indication by halving the congestion window and setting the CWR bit.
+- Other transport layer protocols, including DCCP, DCTCP, and DCQCN, also use ECN.
+- Increasing deployment of ECN capabilities in popular servers and routers.
+
+### 3.9.2 Delay based Congestion Control
+
+- Proactively detects congestion onset before packet loss.
+- TCP Vegas measures RTT for acknowledged packets and adjusts the congestion window based on throughput.
+- TCP Vegas operates under the intuition that TCP senders should “Keep the pipe just full, but no fuller”
+- BBR congestion control builds on TCP Vegas ideas, competing fairly with non BBR TCP senders.
+- Google adopted BBR for all TCP traffic on its private B4 network, replacing CUBIC.
+
+
+## 3.10 Evolution of Transport Layer Functionality
+
+The design and implementation of transport layer functionality has continued to evolve.
+
+- Various versions of TCP developed, implemented, and deployed, including TCP CUBIC, DCTCP, CTCP, BBR, and more.
+- Measurements indicate wider deployment of newer TCP versions on Web servers than classic TCP Reno.
+- Many versions of TCP designed for specific conditions, such as wireless links, high bandwidth paths, paths with packet re-ordering, and more.
+- Diversity in TCP versions handling priorities, parallel paths, acknowledgment, and session establishment/closure.
+- Survey of TCP versions available in [Afanasyev 2010] and [Narayan 2018].
+
+- **QUIC: Quick UDP Internet Connections**
+
+If the transport services needed by an application don’t quite fit either the UDP or TCP service models, application designers can create their own protocol at the application layer. This approach is taken in the QUIC (Quick UDP Internet Connections) protocol
+
+- QUIC is an application layer protocol designed to improve the performance of transport layer services for secure HTTP.
+- Widely deployed, still in the process of being standardized as an Internet.
+- Google has deployed QUIC on many public facing Web servers, in its mobile video streaming YouTube app, in its Chrome browser, and in Android’s Google Search app.
+
+ - **Major Features of QUIC:**
+
+    1. **Connection Oriented and Secure:**
+        - Similar to TCP, QUIC is a connection oriented protocol between two endpoints.
+        - Requires a handshake between endpoints to set up the QUIC connection state.
+        - All QUIC packets are encrypted for security.
+        - Combines handshakes needed for connection establishment, authentication, and encryption, providing faster establishment compared to TCP.
+
+    2. **Streams:**
+        - Allows multiple application level `streams` to be multiplexed through a single QUIC connection.
+        - New streams can be quickly added once a QUIC connection is established.
+        - A stream is an abstraction for reliable, in order bi directional data delivery between two QUIC endpoints.
+
+    3. **Reliable, TCP friendly Congestion Controlled Data Transfer:**
+        - Provides reliable data transfer on a per stream basis.
+        - Each stream operates independently, minimizing HOL blocking problems.
+        - Congestion control mechanisms similar to TCP’s, based on TCP NewReno.
+
+
+
+[Yet To Complete]
+- TCP Cubic
+- TCP Reno Throughput
