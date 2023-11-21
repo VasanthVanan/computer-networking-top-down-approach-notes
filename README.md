@@ -73,3 +73,18 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
     * [3.7.2 Reliable Data Transfer](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#372-reliable-data-transfer)
     * [3.7.3 Flow Control](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#373-flow-control)
     * [3.7.4 TCP Connection Management](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#374-tcp-connection-management)
+* [3.8 Congestion Control](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#38-congestion-control)
+    * [3.8.1 Classic TCP Congestion Control](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#381-classic-tcp-congestion-control)
+* [3.9 Network Assisted Congestions](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#39-network-assisted-congestions)
+    * [3.9.1 Explicit Congestion Notification](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#391-explicit-congestion-notification)
+    * [3.9.2 Delay based Congestion Control](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#392-delay-based-congestion-control)
+* [3.10 Evolution of Transport Layer Functionality](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#310-evolution-of-transport-layer-functionality)
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+[Chapter 4: Network Layer (Data Plane)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#chapter-3-transport-layer)
+---
+
+* [4.1 Overview](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204:%20Network%20Layer%20(Data%20Plane).md#41-overview)
+* [4.2 Router Architecture](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204:%20Network%20Layer%20(Data%20Plane).md#42-router-architecture)
+    * [4.2.1 Input Port Processing and Destination-Based Forwarding](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204:%20Network%20Layer%20(Data%20Plane).md#421-input-port-processing-and-destination-based-forwarding)
