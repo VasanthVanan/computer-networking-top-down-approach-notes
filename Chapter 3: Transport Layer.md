@@ -343,7 +343,7 @@ Animation: [Selective Repeat ARQ](https://www2.tkn.tu-berlin.de/teaching/rn/anim
       - Update SendBase if y > SendBase.
       - If any unacknowledged segments remain, start the timer.
 
-    <img src="https://lh3.googleusercontent.com/pw/ADCreHfd0XeL8ZXe8ewMBM-9XEzLjEQHHXXBQSAGJXOiPCYUlRUDfrbo1FCzGP5NLdxRoCmTgjI1auHjGNDFbkm3fxXuNQ7cv7k65Ha4DrT7hCo_r_rpKPo1vxmCad40jF1o7lAbrDf-0DV7-9xmkbekxu8=w1920-h616-s-no?authuser=2" width="880" height="430">
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHfd0XeL8ZXe8ewMBM-9XEzLjEQHHXXBQSAGJXOiPCYUlRUDfrbo1FCzGP5NLdxRoCmTgjI1auHjGNDFbkm3fxXuNQ7cv7k65Ha4DrT7hCo_r_rpKPo1vxmCad40jF1o7lAbrDf-0DV7-9xmkbekxu8=w1920-h616-s-no?authuser=2" width="740" height="330">
 
 - **Scenarios:**
   - `Duplicate ACKs` can trigger a `fast retransmit` (retransmission before timeout).
@@ -498,6 +498,8 @@ If the transport services needed by an application don’t quite fit either the 
 - QUIC is an application layer protocol designed to improve the performance of transport layer services for secure HTTP.
 - Widely deployed, still in the process of being standardized as an Internet.
 - Google has deployed QUIC on many public facing Web servers, in its mobile video streaming YouTube app, in its Chrome browser, and in Android’s Google Search app.
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHfVhmjEoNV9ljCuYm4MgS-ltGLRRuIXknk6mQo8MLz90CWgfXkWTPKiBgxMfprg7j18tq_jPgfhBKPiKKAKOgfbJ4bAprTPK2fVTutTBvj3Nz28qHfR89VPEXoJ_DK9dpvmNJ_BWTsrMTp3JC81cvx4=w1920-h750-s-no?authuser=2" width="600" height="300">
 
  - **Major Features of QUIC:**
 
