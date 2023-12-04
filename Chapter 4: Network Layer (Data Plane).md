@@ -123,22 +123,22 @@ The switching fabric serves as the core of a router, facilitating the actual swi
   - Crosspoints controlled by a switch fabric controller, enabling `non-blocking` and `parallel forwarding`.
 
 
-## 4.2.3 Output Port Processing
+### 4.2.3 Output Port Processing
 
 - Output port processing involves transmitting packets stored in the output port's memory over the output link.
 - Tasks include packet selection (scheduling), de-queuing for transmission, and executing link-layer and physical-layer functions.
 
-### Input Queueing
+#### Input Queueing
 
 - Minimal queuing at input ports when the switching fabric (Rswitch) is N times faster than the line speed (Rline).
 - If Rswitch is not fast enough, packet queues form at input ports, causing `head-of-the-line (HOL) blocking` and potential packet loss.
 
-### Output Queueing
+#### Output Queueing
 
 - Even with a fast switching fabric, output port queues may form if packets from all N input ports are destined for the same output port.
 - Queued packets can overwhelm the output port's memory, leading to potential packet loss.
 
-## How Much Buffering Is "Enough?"
+#### How Much Buffering Is "Enough?"
 
 - Traditional rule: Buffering (B) equals average round-trip time (RTT) times link capacity (C), i.e., 
    ```B = RTT * C```.
@@ -146,14 +146,14 @@ The switching fabric serves as the core of a router, facilitating the actual swi
 - Optimal buffer size is a nuanced consideration, balancing decreased packet loss with increased queueing delays.
 - Active queue management (AQM) algorithms, like `Random Early Detection (RED)`, help manage buffer dynamics.
 
-## Bufferbloat and Complexities
+#### Bufferbloat and Complexities
 
 - `Bufferbloat` refers to persistent buffering, showcasing the complexity of managing queues.
 - Interaction among senders at the network edge and queues within the network can be subtle.
 
-## 4.2.4 Packet Scheduling
+### 4.2.4 Packet Scheduling
 
-## Comparison Table
+#### Comparison Table
 
 | Discipline            | Description                                | Operation                                                     |
 |-----------------------|--------------------------------------------|---------------------------------------------------------------|
@@ -161,5 +161,75 @@ The switching fabric serves as the core of a router, facilitating the actual swi
 | **Priority Queuing**  | Classifies packets into priority classes; serves higher-priority packets first. | Highest priority class with nonempty queue served first      |
 | **Round Robin**       | Alternates service among classes; each class served in a circular manner. | Round-robin service pattern                                   |
 | **Weighted Fair Queuing (WFQ)** | Generalized round robin with differential service based on weights assigned to each class. | Service based on weighted round-robin pattern                |
+
+## 4.3. IP Addressing
+
+### 4.3.1 IPv4
+
+| Field                   | Description                                                                                                         |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------|
+| **Version number**      | Specifies the IP protocol version of the datagram (IPv4 or IPv6).                                                      |
+| **Header length**       | Determines the start of the payload in the IP datagram; typically 20 bytes for most datagrams.                        |
+| **Type of service**     | Bits used to distinguish different types of IP datagrams based on the required level of service.                      |
+| **Datagram length**     | Total length of the IP datagram (header plus data) in bytes; maximum theoretical size is 65,535 bytes.                 |
+| **Identifier, flags, fragmentation offset** | Fields related to IP fragmentation, where large datagrams are broken into smaller fragments for transmission.        |
+| **Time-to-live**        | Ensures datagrams do not circulate indefinitely; decremented by routers, and dropped if it reaches 0.                  |
+| **Protocol**            | Indicates the specific transport-layer protocol for the data portion of the IP datagram (e.g., TCP, UDP).             |
+| **Header checksum**     | Aids in detecting bit errors in the received IP datagram; computed using 1s complement arithmetic.                    |
+| **Source and destination IP addresses** | Source inserts its IP address, and destination's address is determined, usually via DNS lookup.                    |
+| **Options**             | Allow IP header extension for rare use cases, but omitted in IPv6 for simplicity.                                      |
+| **Data (payload)**      | Contains the transport-layer segment (e.g., TCP or UDP) or other data, such as ICMP messages.                         |
+
+*Note: An IP datagram typically has a 20-byte header (excluding options). If carrying a TCP segment, each datagram includes a total of 40 bytes of header (20 bytes of IP header plus 20 bytes of TCP header) along with the application-layer message.*
+
+### 4.3.2 CIDR (Classless Interdomain Routing):
+
+CIDR is the Internet's address assignment strategy, allowing the division of IP addresses into two parts, a network portion and a device portion. This approach improves address allocation efficiency.
+
+- The network portion is indicated by the x most significant bits of the address (prefix), reducing the size of forwarding tables in routers.
+- The remaining 32-x bits distinguish devices within the organization.
+- CIDR allows flexible subnetting, avoiding the constraints of classful addressing (class A, B, C networks).
+
+
+### 4.3.3 Dynamic Host Configuration Protocol (DHCP)
+
+The Internet Corporation for Assigned Names and Numbers (ICANN) manages IP addresses globally. It allocates addresses to regional Internet registries, which further manage addresses within their regions.
+
+After obtaining a block of addresses, an organization assigns individual IP addresses to host and router interfaces. 
+Dynamic Host Configuration Protocol (DHCP) is commonly used for automatic host address assignment.
+
+#### DHCP Process:
+
+1. **DHCP Server Discovery:**
+   - The host sends a DHCP discover message to find a DHCP server.
+   - The message is broadcast to all nodes on the subnet using IP broadcast.
+   > creates an IP datagram containing its DHCP discover message along with the broadcast destination IP address of 255.255.255.255 and a “this host” source IP address of 0.0.0.0. 
+
+2. **DHCP Server Offer(s):**
+   - DHCP server(s) respond with offer messages.
+   - Offers include the proposed IP address, network mask, and lease time.
+
+3. **DHCP Request:**
+   - The client chooses an offer and responds with a DHCP request.
+
+4. **DHCP ACK:**
+   - The server acknowledges the request with a DHCP ACK message.
+   - The client can use the allocated IP address for the lease duration.
+
+DHCP's plug-and-play capability makes it efficient for network administrators, especially in scenarios with frequent host mobility.
+
+> If no server is present on the subnet, a DHCP relay agent (typi- cally a router) that knows the address of a DHCP server for that network is needed.
+
+### 4.3.4 Network Address Translation (NAT)
+
+- Network Address Translation (NAT) provides a simpler approach to address allocation, especially in scenarios like SOHO networks.
+
+- The addressing within the home network remains as a private network with addresses like 10.0.0.0/24, reserved for private realms. NAT hides the details of the home network from the outside world.
+
+- **Private Address Realm:** The home network computers use private addresses (e.g., 10.0.0.0/24), which are meaningful only within the given network.
+- **Single IP Address to the World:** The NAT router represents the home network to the external world with a single IP address (e.g., 138.76.29.7).
+- **DHCP Usage:** The router often uses DHCP to get its address from the ISP, and it runs a DHCP server for internal network devices.
+
+> NAT routers use a translation table to keep track of internal hosts and their corresponding ports. When a datagram from an internal host is forwarded to the WAN, the NAT router performs address and port translation, updating the source IP address and port.
 
 
