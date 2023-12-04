@@ -97,3 +97,69 @@ The network layer's primary role is to move packets from a sending host to a rec
    - Physical- and link-layer processing.
    - Checking packet's version number, checksum, and time-to-live field.
    - Updating counters for network management.
+
+### 4.2.2 Switching Fabric in Router Architecture
+
+The switching fabric serves as the core of a router, facilitating the actual switching (or forwarding) of packets from input ports to output ports. Different methods of switching are used, each influencing the overall performance and throughput.
+
+#### 1. Switching via Memory:
+
+  - Early routers, acting as traditional computers, controlled switching via the CPU (routing processor).
+  - Input ports signaled the CPU through interrupts.
+  - Packets were copied into processor memory, and the CPU handled destination address lookup and forwarding table processing.
+  - Limited forwarding throughput due to shared system bus constraints.
+
+#### 2. Switching via a Bus:
+
+  - Input port transfers a packet directly to the output port over a shared bus without routing processor involvement.
+  - A switch-internal label indicates the local output port.
+  - Limited by bus speed; only one packet can cross the bus at a time.
+  - Common in small local area and enterprise networks.
+
+#### 3. Switching via an Interconnection Network:
+
+  - Uses a sophisticated interconnection network, e.g., a crossbar switch.
+  - Crossbar switch consists of 2N buses connecting N input ports to N output ports.
+  - Crosspoints controlled by a switch fabric controller, enabling `non-blocking` and `parallel forwarding`.
+
+
+## 4.2.3 Output Port Processing
+
+- Output port processing involves transmitting packets stored in the output port's memory over the output link.
+- Tasks include packet selection (scheduling), de-queuing for transmission, and executing link-layer and physical-layer functions.
+
+### Input Queueing
+
+- Minimal queuing at input ports when the switching fabric (Rswitch) is N times faster than the line speed (Rline).
+- If Rswitch is not fast enough, packet queues form at input ports, causing `head-of-the-line (HOL) blocking` and potential packet loss.
+
+### Output Queueing
+
+- Even with a fast switching fabric, output port queues may form if packets from all N input ports are destined for the same output port.
+- Queued packets can overwhelm the output port's memory, leading to potential packet loss.
+
+## How Much Buffering Is "Enough?"
+
+- Traditional rule: Buffering (B) equals average round-trip time (RTT) times link capacity (C), i.e., 
+   ```B = RTT * C```.
+- Modern Rule: B = `RTT C (2N)^1/2`
+- Optimal buffer size is a nuanced consideration, balancing decreased packet loss with increased queueing delays.
+- Active queue management (AQM) algorithms, like `Random Early Detection (RED)`, help manage buffer dynamics.
+
+## Bufferbloat and Complexities
+
+- `Bufferbloat` refers to persistent buffering, showcasing the complexity of managing queues.
+- Interaction among senders at the network edge and queues within the network can be subtle.
+
+## 4.2.4 Packet Scheduling
+
+## Comparison Table
+
+| Discipline            | Description                                | Operation                                                     |
+|-----------------------|--------------------------------------------|---------------------------------------------------------------|
+| **FIFO**               | Queuing in arrival order; packets leave in the same order they arrived. | Selection based on arrival order; removal after transmission |
+| **Priority Queuing**  | Classifies packets into priority classes; serves higher-priority packets first. | Highest priority class with nonempty queue served first      |
+| **Round Robin**       | Alternates service among classes; each class served in a circular manner. | Round-robin service pattern                                   |
+| **Weighted Fair Queuing (WFQ)** | Generalized round robin with differential service based on weights assigned to each class. | Service based on weighted round-robin pattern                |
+
+
