@@ -153,6 +153,8 @@ The switching fabric serves as the core of a router, facilitating the actual swi
 
 ### 4.2.4 Packet Scheduling
 
+<img src="https://lh3.googleusercontent.com/pw/ADCreHcFLP8aO7hejw7Bz_Pi6SDL4Mn_JCH-uqICUcpReaA3zqp-zmofVtV7jExfIroysPj2720oVq_PGQbRkTk7Y02KAYeLl4FzrAJEU22PuhYmyQpY0GKGamDgPNIctL-cHeb23Fzgf3f0BFlZ7a3l3MKi=w1920-h386-s-no?authuser=2" width="900" height="200">
+
 #### Comparison Table
 
 | Discipline            | Description                                | Operation                                                     |
@@ -165,6 +167,8 @@ The switching fabric serves as the core of a router, facilitating the actual swi
 ## 4.3. IP Addressing
 
 ### 4.3.1 IPv4
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHduJMEOpHZpP3FXB5m6nzbxOzzFUvu3eIBqzrcg70qXQVH4SKc-2Qbq4wvAh4pdCtO7VINEji6qQvC4e944DTm_96sKkCR6Q7PAcOYEKjfzdBDW-eOpdQWuM_EO1jmIKQDPMVqeVflTjRWBuH7DN8Gc=w1352-h948-s-no?authuser=2" width="600" height="400">
 
 | Field                   | Description                                                                                                         |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|
@@ -231,5 +235,37 @@ DHCP's plug-and-play capability makes it efficient for network administrators, e
 - **DHCP Usage:** The router often uses DHCP to get its address from the ISP, and it runs a DHCP server for internal network devices.
 
 > NAT routers use a translation table to keep track of internal hosts and their corresponding ports. When a datagram from an internal host is forwarded to the WAN, the NAT router performs address and port translation, updating the source IP address and port.
+
+### 4.3.5 IPv6
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHfHs4kPC6QGsL7q-0yCrpp5_QZddnjOJtMVac9UDP0gLPW-DFpAMthbUFsFBDydYEPNwrvqZbClMvtNo-zJotLMOuk_cyi5ozrgos5acXsOVtBJGzUF3cMEvpjBJXqn1NYfOvKmjC-ub6uaXf_t0ONs=w1522-h856-s-no?authuser=2" width="600" height="400">
+
+| Field             | Size (bits) | Description                                                                                                              |
+|-------------------|-------------|--------------------------------------------------------------------------------------------------------------------------|
+| Version           | 4           | Identifies the IP version number. IPv6 carries a value of 6 in this field.                                                |
+| Traffic Class     | 8           | Similar to the TOS field in IPv4, it can prioritize datagrams within a flow or from specific applications.               |
+| Flow Label        | 20          | Identifies a flow of datagrams, allowing special handling for quality of service or real-time service.                    |
+| Payload Length    | 16          | Unsigned integer indicating the number of bytes in the IPv6 datagram following the fixed-length 40-byte header.          |
+| Next Header       | 8           | Identifies the protocol to which the datagram's contents will be delivered (e.g., TCP or UDP).                             |
+| Hop Limit         | 8           | Decremented by each forwarding router; if it reaches zero, the datagram is discarded.                                    |
+| Source Address    | 128         | IPv6 128-bit address format.                                                                                             |
+| Destination Address | 128       | IPv6 128-bit address format.                                                                                             |
+| Data              | Variable    | Payload portion of the IPv6 datagram, passed on to the protocol specified in the Next Header field.                      |
+| Fragmentation/Reassembly | N/A | IPv6 does not allow fragmentation and reassembly at intermediate routers. "Packet Too Big" ICMP error is sent if needed. |
+| Header Checksum   | N/A         | Removed in IPv6, as checksumming is performed by transport and link-layer protocols.                                      |
+| Options           | Variable    | No longer part of the standard IP header; included as one of the possible next headers, resulting in a fixed-length header.|
+
+#### Transitioning from IPv4 to IPv6
+
+The most widely adopted approach for IPv4-to-IPv6 transition involves **tunneling**. Tunneling is a concept applicable in diverse scenarios, including all-IP cellular networks. In tunneling, if two IPv6 nodes (e.g., B and E) want to communicate but are connected through intervening IPv4 routers, a tunnel is established.
+
+
+<img src="https://lh3.googleusercontent.com/pw/ADCreHd2h_OChNHQc4WNwCHNijHEFo39w0IatpNIbkEBUimj97YnwrCBPSOhDnyipU0dBtwJ81Kw_nqllRnhZINyMzV0eZ24O1Vd7PJ5FrLdzOpAq0lJJdHL85DDlWIlejWaHrol4lMMiRTlz35FP31xPwx3=w1442-h1094-s-no?authuser=2" width="600" height="400">
+
+- The IPv6 node on the sending side (B) encapsulates the entire IPv6 datagram in the payload of an IPv4 datagram.
+- The IPv4 datagram is addressed to the IPv6 node on the receiving side (E) and sent into the tunnel.
+- Intervening IPv4 routers route the IPv4 datagram, unaware that it contains a complete IPv6 datagram.
+- The receiving IPv6 node extracts the IPv6 datagram and routes it as if received directly.
+
 
 
