@@ -82,9 +82,18 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-[Chapter 4: Network Layer (Data Plane)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#chapter-3-transport-layer)
+[Chapter 4: Network Layer (Data Plane)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md)
 ---
 
 * [4.1 Overview](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204:%20Network%20Layer%20(Data%20Plane).md#41-overview)
 * [4.2 Router Architecture](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204:%20Network%20Layer%20(Data%20Plane).md#42-router-architecture)
     * [4.2.1 Input Port Processing and Destination-Based Forwarding](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204:%20Network%20Layer%20(Data%20Plane).md#421-input-port-processing-and-destination-based-forwarding)
+    * [4.2.2 Switching Fabric in Router Architecture](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#422-switching-fabric-in-router-architecture)
+    * [4.2.3 Output Port Processing](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#423-output-port-processing)
+    * [4.2.4 Packet Scheduling](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#424-packet-scheduling)
+* [4.3. IP Addressing](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#43-ip-addressing)
+    * [4.3.1 IPv4](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#431-ipv4)
+    * [4.3.2 CIDR (Classless Interdomain Routing)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#432-cidr-classless-interdomain-routing)
+    * [4.3.3 Dynamic Host Configuration Protocol (DHCP)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#433-dynamic-host-configuration-protocol-dhcp)
+    * [4.3.4 Network Address Translation (NAT)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#434-network-address-translation-nat)
+    * [4.3.5 IPv6](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#435-ipv6)

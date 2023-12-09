@@ -186,7 +186,7 @@ The switching fabric serves as the core of a router, facilitating the actual swi
 
 *Note: An IP datagram typically has a 20-byte header (excluding options). If carrying a TCP segment, each datagram includes a total of 40 bytes of header (20 bytes of IP header plus 20 bytes of TCP header) along with the application-layer message.*
 
-### 4.3.2 CIDR (Classless Interdomain Routing):
+### 4.3.2 CIDR (Classless Interdomain Routing)
 
 CIDR is the Internet's address assignment strategy, allowing the division of IP addresses into two parts, a network portion and a device portion. This approach improves address allocation efficiency.
 
