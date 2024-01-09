@@ -182,3 +182,11 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 </details>
+
+<details>
+<summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md"><b style="font-size:20px">Chapter 5: Network Layer (Control Plane)</b></a></summary>
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+</details>
