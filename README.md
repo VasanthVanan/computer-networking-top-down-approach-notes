@@ -44,7 +44,6 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 
 </details>
 
-<br>
 
 <details>
 <summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md"><b style="font-size:20px">Chapter 2: Aplication Layer</b></a></summary>
@@ -91,7 +90,6 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 
 </details>
 
-<br>
 
 <details>
 <summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#chapter-3-transport-layer"><b style="font-size:20px">Chapter 3: Transport Layer</b></a></summary>
@@ -147,7 +145,6 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 
 </details>
 
-<br>
 
 <details>
 <summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md"><b style="font-size:20px">Chapter 4: Network Layer (Data Plane)</b></a></summary>
