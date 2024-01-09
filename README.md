@@ -7,7 +7,6 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 <details>
 <summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md"><b style="font-size:20px">Chapter 1: Computer Networking and the Internet</b></a></summary>
 
----
 
 - [1.1 A Nuts-and-Bolts Description (Infrastructure based Internet)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#11-a-nuts-and-bolts-description-infrastructure-based-internet)
 
@@ -50,7 +49,6 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 <details>
 <summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md"><b style="font-size:20px">Chapter 2: Aplication Layer</b></a></summary>
 
----
 
 * [2.1 Principle of Network Applications](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md#21-principle-of-network-applications)
 
@@ -98,7 +96,6 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 <details>
 <summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#chapter-3-transport-layer"><b style="font-size:20px">Chapter 3: Transport Layer</b></a></summary>
 
----
 
 * [3.1 Transport-Layer Services](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#31-transport-layer-services)
 
@@ -154,8 +151,6 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 
 <details>
 <summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md"><b style="font-size:20px">Chapter 4: Network Layer (Data Plane)</b></a></summary>
-
----
 
 
 * [4.1 Overview](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204:%20Network%20Layer%20(Data%20Plane).md#41-overview)
