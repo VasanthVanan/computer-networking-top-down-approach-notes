@@ -186,6 +186,21 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 <details>
 <summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md"><b style="font-size:20px">Chapter 5: Network Layer (Control Plane)</b></a></summary>
 
+* [5.1 Routing Algorithms](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#51-routing-algorithms)
+
+* [5.2 Intra-AS Routing: OSPF](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#52-intra-as-routing-ospf)
+
+    * [5.2.1 OSPF (Open Shortest Path First)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#521-ospf-open-shortest-path-first)
+
+    * [5.2.2 OSPF Features and Advancements](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#522-ospf-features-and-advancements)
+
+* [5.3 Inter-AS Routing: BGP](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#53-inter-as-routing-bgp)
+
+    * [5.3.1 BGP Responsibilities](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#531-bgp-responsibilities)
+
+    * [5.3.2 Hot Potato Routing in BGP](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#532-hot-potato-routing-in-bgp)
+
+
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
