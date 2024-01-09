@@ -42,6 +42,8 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 
 - [1.12 Networks Under Attack](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%201:%20Computer%20Networks%20and%20the%20Internet.md#112-networks-under-attack)
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 </details>
 
 
@@ -87,6 +89,7 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
     
     * [2.5.5 Inserting Records to DNS Database](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%202:%20Application%20Layer.md#255-inserting-records-to-dns-database)
     
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 </details>
 
@@ -143,6 +146,8 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
     
 * [3.10 Evolution of Transport Layer Functionality](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%203:%20Transport%20Layer.md#310-evolution-of-transport-layer-functionality)
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 </details>
 
 
@@ -174,5 +179,6 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 
     * [4.3.5 IPv6](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%204%3A%20Network%20Layer%20(Data%20Plane).md#435-ipv6)
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 </details>
