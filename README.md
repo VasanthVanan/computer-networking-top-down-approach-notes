@@ -199,8 +199,18 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
     * [5.3.1 BGP Responsibilities](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#531-bgp-responsibilities)
 
     * [5.3.2 Hot Potato Routing in BGP](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#532-hot-potato-routing-in-bgp)
+ 
+    * [5.3.3 IP Anycast in BGP](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#533-ip-anycast-in-bgp)
 
+* [5.4 ICMP (Internet Control Message Protocol)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#54-icmp-internet-control-message-protocol)
 
+* [5.5 Network Management](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#55-network-management)
+  
+    * [5.5.1 Network Management Components](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#551-network-management-components)
+
+    * [5.5.2 SNMPv3 Message Types](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#552-snmpv3-message-types)
+ 
+    * [5.5.3 NETCONF/YANG](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%205%3A%20Network%20Layer%20(Control%20Plane).md#553-netconfyang)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
