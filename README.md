@@ -215,3 +215,19 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 </details>
+
+<details>
+<summary><a href="https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md"><b style="font-size:20px">Chapter 6: Link Layer and LANs</b></a></summary>
+
+* [6.1 Link Layer](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#61-link-layer)
+
+* [6.2 Error Detection & Correction Techniques](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#62-error-detection--correction-techniques)
+
+    * [6.2.1 Parity Checks](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#621-parity-checks)
+    * [6.2.2 Checksumming Methods](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#622-checksumming-methods)
+    * [6.2.3 Cyclic Redundancy Check (CRC)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#623-cyclic-redundancy-check-crc)
+
+* [6.3 Multiple Access Links and Protocols](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#63-multiple-access-links-and-protocols)
+
+</details>
+
