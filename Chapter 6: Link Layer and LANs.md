@@ -196,7 +196,7 @@ In a random access protocol, a transmitting node always transmits at the full ra
 
     <img src="https://lh3.googleusercontent.com/pw/ABLVV85ip3uwpFb-_CdsLD7jkOiO3qB8xndr_7sjDFGBl1Bc0LMva75FMgNGtshNuxoLYOVNC1QtRRlhdZS5VMZEwma62vSR_VMyF30dCzCORAaGmYF6Xqzp4pixg7nXi0klaFi1QfMvewAaR9duSc9X1jNU=w1098-h298-s-no?authuser=1" width="60%" height="auto">
 
-### 6.4.4 Ethernet Frame Structure
+### 6.4.3 Ethernet Frame Structure
 
 An Ethernet frame consists of the following components:
 
