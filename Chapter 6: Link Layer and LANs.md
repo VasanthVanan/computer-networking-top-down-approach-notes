@@ -84,7 +84,7 @@ In a random access protocol, a transmitting node always transmits at the full ra
 - If a collision occurs, nodes retransmit with a probability. Efficiency is less than slotted ALOHA. 
 - If a first bit of a new frame overlaps with the last bit of a nearly finished frame, both frames will be completely destroyed and must be retransmitted later.
 
-  <img src="https://www.myreadingroom.co.in/images/stories/docs/dcn/aloha%20Protocols_Pure%20aloha.JPG" width="50%" height="auto">
+  <img src="https://www.myreadingroom.co.in/images/stories/docs/dcn/aloha%20Protocols_Pure%20aloha.JPG" width="60%" height="auto">
 
 #### Slotted ALOHA
 
@@ -93,7 +93,7 @@ In a random access protocol, a transmitting node always transmits at the full ra
 - If a station misses out the allowed time, it must wait for the next slot. This reduces the probability of collisions.
 - Efficiency is determined by the long-run fraction of successful slots.
 
-  <img src="https://www.myreadingroom.co.in/images/stories/docs/dcn/aloha%20Protocols_Slotted%20aloha.JPG" width="50%" height="auto">
+  <img src="https://www.myreadingroom.co.in/images/stories/docs/dcn/aloha%20Protocols_Slotted%20aloha.JPG" width="60%" height="auto">
 
 
 #### Carrier Sense Multiple Access (CSMA)
@@ -105,7 +105,7 @@ In a random access protocol, a transmitting node always transmits at the full ra
   - Non-persistent CSMA: If station is busy, it will wait for a random time and **RANDOMLY** sense the medium before transmitting again.
   - p-Persistent CSMA: It applies to slotted channels; If station is idle, it it will **CONTINUOUSLY** sense and waits for the slotted time to transmits the data  [Probability=p]
 
-    <img src="https://lh3.googleusercontent.com/pw/ABLVV85KjpQ0qYdwG8uIEdt8Cc9gmX_OuSDW8miulqzMWK6G4hWCye5msmonru0zsxMhdGGPvPA5v2BLjAbqQ8wdiKADibiq3uBky0cCGSA7HyDAtNAiEGnhGPQEKmwed5E1vho35A8BWl89Evxu11cV7nOY=w792-h912-s-no?authuser=1" width="30%" height="auto">
+    <img src="https://lh3.googleusercontent.com/pw/ABLVV85KjpQ0qYdwG8uIEdt8Cc9gmX_OuSDW8miulqzMWK6G4hWCye5msmonru0zsxMhdGGPvPA5v2BLjAbqQ8wdiKADibiq3uBky0cCGSA7HyDAtNAiEGnhGPQEKmwed5E1vho35A8BWl89Evxu11cV7nOY=w792-h912-s-no?authuser=1" width="60%" height="auto">
 
 #### CSMA/CD
 
@@ -135,7 +135,7 @@ In a random access protocol, a transmitting node always transmits at the full ra
 - When a station needs to send a data frame, it makes a reservation in its own minislot.
 - The stations that have made reservations can send their data frames after the reservation frame. 
 
-  <img src="https://lh3.googleusercontent.com/pw/ABLVV87UZqcqWAnjvjtJEv4aOyT7zCUGjsXN3IpnbYXROTCMHMKk0MYs_I4YY3UiacY0VLciUZX3UFWBZeQos1iVeAI13UpJi5mpykVtukwb8KrtujF3js3tJY1g-KeteIAkCjYeT6bwj8-N--2Av-TrdgCx=w1920-h422-s-no?authuser=1" width="40%" height="auto">
+  <img src="https://lh3.googleusercontent.com/pw/ABLVV87UZqcqWAnjvjtJEv4aOyT7zCUGjsXN3IpnbYXROTCMHMKk0MYs_I4YY3UiacY0VLciUZX3UFWBZeQos1iVeAI13UpJi5mpykVtukwb8KrtujF3js3tJY1g-KeteIAkCjYeT6bwj8-N--2Av-TrdgCx=w1920-h422-s-no?authuser=1" width="60%" height="auto">
 
 #### Polling
 
@@ -170,7 +170,7 @@ In a random access protocol, a transmitting node always transmits at the full ra
   - Plug-and-play; ARP tables get built automatically.
   - ARP table also contains a time-to-live (TTL) value, which indi- cates when each mapping will be deleted from the table. 
 
-    <img src="https://ipcisco.com/wp-content/uploads/2018/10/arp-packet-format-ipcisco.jpg" width="50%" height="auto">
+    <img src="https://ipcisco.com/wp-content/uploads/2018/10/arp-packet-format-ipcisco.jpg" width="60%" height="auto">
 
     > A MAC address table, sometimes called a Content Addressable Memory (CAM) table, is used on Ethernet switches to determine where to forward traffic on a LAN.
 
@@ -194,7 +194,7 @@ In a random access protocol, a transmitting node always transmits at the full ra
   - Router consults a forwarding table to determine the correct interface for forwarding the datagram.
   - ARP is used again to obtain the MAC address of the ultimate destination.
 
-    <img src="https://lh3.googleusercontent.com/pw/ABLVV85ip3uwpFb-_CdsLD7jkOiO3qB8xndr_7sjDFGBl1Bc0LMva75FMgNGtshNuxoLYOVNC1QtRRlhdZS5VMZEwma62vSR_VMyF30dCzCORAaGmYF6Xqzp4pixg7nXi0klaFi1QfMvewAaR9duSc9X1jNU=w1098-h298-s-no?authuser=1" width="50%" height="auto">
+    <img src="https://lh3.googleusercontent.com/pw/ABLVV85ip3uwpFb-_CdsLD7jkOiO3qB8xndr_7sjDFGBl1Bc0LMva75FMgNGtshNuxoLYOVNC1QtRRlhdZS5VMZEwma62vSR_VMyF30dCzCORAaGmYF6Xqzp4pixg7nXi0klaFi1QfMvewAaR9duSc9X1jNU=w1098-h298-s-no?authuser=1" width="60%" height="auto">
 
 ### 6.4.4 Ethernet Frame Structure
 
@@ -250,7 +250,7 @@ In a port-based VLAN,
 
 - The IEEE standard 802.1Q defines VLAN trunking. A special Ethernet frame format includes a four-byte VLAN tag in the header, carrying the VLAN identity. The VLAN tag contains a Tag Protocol Identifier (TPID) field, Tag Control Information field with a VLAN identifier, and a priority field.
 
-  <img src="https://lh3.googleusercontent.com/pw/ABLVV86GRpSCpPwDC_6jYwJMrRJN_qv1J9ibbzlXHiLnhqUDrzYnys_mi0UWgCl23AiOvD6pj5uSwmq2vfZCEwBnR6W4jHveYtPYUuApve3oEhqSQwx2EgrTUDipODFighaOcZSCm8vYj43Tc-rwjNgelxXX=w1070-h326-s-no?authuser=1" width="50%" height="auto">
+  <img src="https://lh3.googleusercontent.com/pw/ABLVV86GRpSCpPwDC_6jYwJMrRJN_qv1J9ibbzlXHiLnhqUDrzYnys_mi0UWgCl23AiOvD6pj5uSwmq2vfZCEwBnR6W4jHveYtPYUuApve3oEhqSQwx2EgrTUDipODFighaOcZSCm8vYj43Tc-rwjNgelxXX=w1070-h326-s-no?authuser=1" width="60%" height="auto">
 
 ## 6.7 Multiprotocol Label Switching (MPLS)
 
@@ -262,4 +262,4 @@ MPLS enhances IP router's forwarding speed by incorporating a key concept from v
 - MPLS introduces traffic engineering capabilities, allowing routers to forward packets along paths not determined by standard IP routing protocols. This enables network operators to override normal IP routing for specific traffic management purposes.
 - MPLS can be utilized for fast restoration of forwarding paths, implementing virtual private networks (VPNs), and various other purposes.
 
-  <img src="https://lh3.googleusercontent.com/pw/ABLVV85_ezMEMThiI57Cz0Nl6TJ9fqu5Hy_LhUBUIBekDQIscXCMhItu_f5nWHDMaVJbf-jawTk7U1O373NdGqgU4NAKtSjzFaJUXNmikDk12nLxgQlGLXK2n3IPH1zcOhw5aw9MjKkbRu5CfDZmn1Lp_XJe=w908-h558-s-no?authuser=1" width="40%" height="auto">
+  <img src="https://lh3.googleusercontent.com/pw/ABLVV85_ezMEMThiI57Cz0Nl6TJ9fqu5Hy_LhUBUIBekDQIscXCMhItu_f5nWHDMaVJbf-jawTk7U1O373NdGqgU4NAKtSjzFaJUXNmikDk12nLxgQlGLXK2n3IPH1zcOhw5aw9MjKkbRu5CfDZmn1Lp_XJe=w908-h558-s-no?authuser=1" width="60%" height="auto">
