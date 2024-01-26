@@ -227,7 +227,24 @@ This repository includes notes for "Computer Networking: A Top-down Approach," 8
     * [6.2.2 Checksumming Methods](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#622-checksumming-methods)
     * [6.2.3 Cyclic Redundancy Check (CRC)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#623-cyclic-redundancy-check-crc)
 
-* [6.3 Multiple Access Links and Protocols](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#63-multiple-access-links-and-protocols)
+* [6.3 Multiple Access Links and Protocols](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#631-channel-partitioning-protocols)
+
+    * [6.3.1 Channel Partitioning Protocols](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206%3A%20Link%20Layer%20and%20LANs.md#621-parity-checks)
+    * [6.3.2 Random Access Protocols](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#632-random-access-protocols)
+    * [6.3.3 Taking Turns Protocols (Controlled Access)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#633-taking-turns-protocols-controlled-access)
+
+* [6.4 Link Layer Addressing](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#64-link-layer-addressing)
+
+    * [6.4.1 Media Access Control (MAC) Addresses](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#641-media-access-control-mac-addresses)
+    * [6.4.2 Address Resolution Protocol (ARP)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#642-address-resolution-protocol-arp)
+    * [6.4.3 Ethernet Frame Structure](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#643-ethernet-frame-structure)
+
+* [6.5 Link Layer Switches](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#65-link-layer-switches)
+
+* [6.6 Virtual Local Area Networks (VLANs)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#66-virtual-local-area-networks-vlans)
+
+* [6.7 Multiprotocol Label Switching (MPLS)](https://github.com/VasanthVanan/computer-networking-top-down-approach-notes/blob/main/Chapter%206:%20Link%20Layer%20and%20LANs.md#67-multiprotocol-label-switching-mpls)
+
 
 </details>
 
