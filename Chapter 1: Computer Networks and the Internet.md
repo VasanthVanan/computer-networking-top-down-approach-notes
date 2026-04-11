@@ -165,6 +165,9 @@ Internet standards, developed by the ```Internet Engineering Task Force (IETF)``
 - **Peering:** ISPs can peer, enabling direct traffic exchange without payment. Tier 1 ISPs also peer.
 - **IXPs:** Internet Exchange Points facilitate ISPs' direct connections, enhancing efficiency.
 - **Content Provider Networks:** Large providers like Google create their networks for control and cost reduction.
+- **PoP:** A PoP is simply a group of one or
+more routers (at the same location) in the provider’s network where customer ISPs
+can connect into the provider ISP.
 
 <img src="https://lh3.googleusercontent.com/pw/ADCreHfe3VrXVOkt6FxFDHy4qRsByO6EugEHMcLkEvVuXtz2Bz3iZW28h32W2rJs7faFriHzgxJIfbOPV2Gd5L1_0e9PqKnc_pCtjmqNN0OxeH15auTYBd17kowR13spgnTFSgBjINghCV3Ew7gDsBC8lIh5=w1920-h926-s-no" width="600" height="300">
 
