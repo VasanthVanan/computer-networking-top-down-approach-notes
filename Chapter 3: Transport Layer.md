@@ -11,7 +11,16 @@
 - It converts application messages into transport layer `segments`, encapsulated within network layer packets (datagrams) for transmission.
 - Transport protocols work only within end systems and are not involved in routing or network core activities.
 - These protocol provides communication between application **processes**, while network layer protocol provides communication between **hosts**.
+-transport protocols run in
+end systems
 
+--send side: breaks app
+messages into segments,
+passes to network layer
+
+--rcv side: reassembles
+segments into messages,
+passes to app layer
 -  IP makes its “best effort” to deliver segments between communicating hosts, but it makes no guarantees. (IP is said to be an unreliable service)
 
 > The most fundamental responsibility of UDP and TCP is to extend IP’s delivery service between two end systems to a delivery service between two processes running on the end systems. Extending host-to-host delivery to process-to-process delivery is called transport layer multiplexing and demultiplexing.
